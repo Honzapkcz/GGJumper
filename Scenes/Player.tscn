@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3bs0kmok3vlt"]
+
+[ext_resource type="Script" path="res://Scenes/Player.gd" id="1_5wf7h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6jpl"]
+size = Vector2(63, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rlp4"]
+size = Vector2(48, 63)
+
+[sub_resource type="InputEventKey" id="InputEventKey_ojvjd"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_4iau5"]
+events = [SubResource("InputEventKey_ojvjd")]
+
+[sub_resource type="QuadMesh" id="QuadMesh_umlg7"]
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_5wf7h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_d6jpl")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_2rlp4")
+
+[node name="LadderArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderArea2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_2rlp4")
+
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+position = Vector2(-32, -32)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_top = -14.0
+offset_right = 85.0
+offset_bottom = 63.0
+theme_override_font_sizes/font_size = 50
+shortcut = SubResource("Shortcut_4iau5")
+text = "Esc"
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="Eye1" type="MeshInstance2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-16, -8)
+scale = Vector2(8, 32)
+mesh = SubResource("QuadMesh_umlg7")
+
+[node name="Eye2" type="MeshInstance2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(16, -8)
+scale = Vector2(8, 32)
+mesh = SubResource("QuadMesh_umlg7")
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_entered" from="LadderArea2D" to="." method="_on_ladder_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="LadderArea2D" to="." method="_on_ladder_area_2d_body_shape_exited"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

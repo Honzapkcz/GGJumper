@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0a05mms43kmy"]
+
+[ext_resource type="Script" path="res://Objects/Teleport.gd" id="1_j4ag8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6iac"]
+size = Vector2(48, 88)
+
+[node name="Teleport" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_j4ag8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_h6iac")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_top = -23.0
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "E"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

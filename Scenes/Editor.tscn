@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://n1utnbgquhlr"]
+
+[ext_resource type="PackedScene" uid="uid://dvoqhvtoq3knb" path="res://World.tscn" id="1_6bxky"]
+[ext_resource type="Script" path="res://Scenes/Editor.gd" id="1_msnx6"]
+
+[node name="Editor" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_msnx6")
+
+[node name="LSplit" type="HSplitContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LPanel" type="Panel" parent="LSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RSplit" type="HSplitContainer" parent="LSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="VSplit" type="VSplitContainer" parent="LSplit/RSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="VPort" type="SubViewportContainer" parent="LSplit/RSplit/VSplit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+stretch = true
+
+[node name="SVPort" type="SubViewport" parent="LSplit/RSplit/VSplit/VPort"]
+handle_input_locally = false
+size = Vector2i(2, 2)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="LSplit/RSplit/VSplit/VPort/SVPort"]
+
+[node name="World" parent="LSplit/RSplit/VSplit/VPort/SVPort" instance=ExtResource("1_6bxky")]
+
+[node name="GraphEdit" type="GraphEdit" parent="LSplit/RSplit/VSplit"]
+layout_mode = 2
+size_flags_vertical = 3
+minimap_size = Vector2(120, 80)
+show_zoom_buttons = false
+show_grid_buttons = false
+
+[node name="RPanel" type="Panel" parent="LSplit/RSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="connection_request" from="LSplit/RSplit/VSplit/GraphEdit" to="." method="_on_graph_edit_connection_request"]
+[connection signal="copy_nodes_request" from="LSplit/RSplit/VSplit/GraphEdit" to="." method="_on_graph_edit_copy_nodes_request"]
+[connection signal="disconnection_request" from="LSplit/RSplit/VSplit/GraphEdit" to="." method="_on_graph_edit_disconnection_request"]
+[connection signal="paste_nodes_request" from="LSplit/RSplit/VSplit/GraphEdit" to="." method="_on_graph_edit_paste_nodes_request"]

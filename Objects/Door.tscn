@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxcscnvkhggrl"]
+
+[ext_resource type="Script" path="res://Objects/Door.gd" id="1_5m566"]
+[ext_resource type="Texture2D" uid="uid://dh5bq5rg4x4dy" path="res://tilemap.png" id="1_apsvr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43bnv"]
+size = Vector2(16, 32)
+
+[node name="Door" type="StaticBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 2
+script = ExtResource("1_5m566")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_apsvr")
+region_enabled = true
+region_rect = Rect2(40, 32, 16, 32)
+region_filter_clip_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_43bnv")

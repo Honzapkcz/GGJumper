@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://kwfnwhh3hn0x"]
+
+[node name="ClockNode" type="GraphNode"]
+custom_minimum_size = Vector2(200, 0)
+offset_right = 100.0
+offset_bottom = 80.0
+title = "Clock"
+slot/0/left_enabled = true
+slot/0/left_type = 2
+slot/0/left_color = Color(0.627451, 0.941176, 0.941176, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 21
+slot/0/right_color = Color(1, 0.372549, 0.372549, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = true
+slot/1/left_type = 3
+slot/1/left_color = Color(0.25098, 0.313726, 0.941176, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Interval"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Clock
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Enabled"

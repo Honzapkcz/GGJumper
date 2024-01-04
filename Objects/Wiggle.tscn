@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgqn2o7up3qok"]
+
+[ext_resource type="Script" path="res://Objects/Wiggle.gd" id="1_6en2w"]
+
+[node name="Wiggle" type="CanvasGroup"]
+script = ExtResource("1_6en2w")
