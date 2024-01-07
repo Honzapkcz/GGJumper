@@ -14,7 +14,8 @@ slot/0/right_type = 48
 slot/0/right_color = Color(1, 0.627451, 0.376471, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
+metadata/params = 1
 
-[node name="OptionButton" type="OptionButton" parent="."]
+[node name="Value" type="OptionButton" parent="."]
 layout_mode = 2
 fit_to_longest_item = false
