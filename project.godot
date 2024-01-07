@@ -24,8 +24,18 @@ Transition="*res://Scenes/Transition.tscn"
 
 [display]
 
+window/size/window_width_override=2304
+window/size/window_height_override=1296
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor]
+
+movie_writer/movie_file="/home/honza/Programs/GG/demo.avi"
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 
