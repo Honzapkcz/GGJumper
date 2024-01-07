@@ -11,6 +11,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_msnx6")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.129412, 0.14902, 0.180392, 1)
+
 [node name="LSplit" type="HSplitContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -19,6 +23,25 @@ size_flags_vertical = 3
 [node name="LPanel" type="Panel" parent="LSplit"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Margin" type="MarginContainer" parent="LSplit/LPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="LSplit/LPanel/Margin"]
+layout_mode = 2
+
+[node name="Tree" type="Tree" parent="LSplit/LPanel/Margin/VBox"]
+layout_mode = 2
+hide_root = true
 
 [node name="RSplit" type="HSplitContainer" parent="LSplit"]
 layout_mode = 2
@@ -39,7 +62,7 @@ stretch = true
 
 [node name="SVPort" type="SubViewport" parent="LSplit/RSplit/VSplit/VPort"]
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(681, 426)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="LSplit/RSplit/VSplit/VPort/SVPort"]
@@ -54,10 +77,91 @@ show_zoom_buttons = false
 show_grid_buttons = false
 
 [node name="RPanel" type="Panel" parent="LSplit/RSplit"]
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="Margin" type="MarginContainer" parent="LSplit/RSplit/RPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Grid" type="GridContainer" parent="LSplit/RSplit/RPanel/Margin"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Boolean"
+
+[node name="CheckBox" type="CheckBox" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "On"
+
+[node name="Label2" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+layout_mode = 2
+text = "Integer"
+
+[node name="SpinBox" type="SpinBox" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+layout_mode = 2
+allow_greater = true
+allow_lesser = true
+
+[node name="Label3" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+layout_mode = 2
+text = "Float"
+
+[node name="SpinBox2" type="SpinBox" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+layout_mode = 2
+step = 0.001
+allow_greater = true
+allow_lesser = true
+
+[node name="Label4" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+layout_mode = 2
+text = "String
+"
+
+[node name="LineEdit" type="LineEdit" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+layout_mode = 2
+text = "Long String"
+
+[node name="HBox" type="HBoxContainer" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="LSplit/RSplit/RPanel/Margin/Grid/HBox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="LSplit/RSplit/RPanel/Margin/Grid/HBox"]
+layout_mode = 2
+text = "↪"
+
+[node name="Label6" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+layout_mode = 2
+text = "Vector"
+
+[connection signal="dragged" from="LSplit" to="." method="_on_l_split_dragged"]
+[connection signal="resized" from="LSplit/LPanel" to="." method="_on_l_panel_resized"]
 [connection signal="connection_request" from="LSplit/RSplit/VSplit/GraphEdit" to="." method="_on_graph_edit_connection_request"]
 [connection signal="copy_nodes_request" from="LSplit/RSplit/VSplit/GraphEdit" to="." method="_on_graph_edit_copy_nodes_request"]
+[connection signal="delete_nodes_request" from="LSplit/RSplit/VSplit/GraphEdit" to="." method="_on_graph_edit_delete_nodes_request"]
 [connection signal="disconnection_request" from="LSplit/RSplit/VSplit/GraphEdit" to="." method="_on_graph_edit_disconnection_request"]
+[connection signal="gui_input" from="LSplit/RSplit/VSplit/GraphEdit" to="." method="_on_graph_edit_gui_input"]
+[connection signal="node_deselected" from="LSplit/RSplit/VSplit/GraphEdit" to="." method="_on_graph_edit_node_deselected"]
+[connection signal="node_selected" from="LSplit/RSplit/VSplit/GraphEdit" to="." method="_on_graph_edit_node_selected"]
 [connection signal="paste_nodes_request" from="LSplit/RSplit/VSplit/GraphEdit" to="." method="_on_graph_edit_paste_nodes_request"]
+[connection signal="pressed" from="LSplit/RSplit/RPanel/Margin/Grid/HBox/Button" to="." method="on_textedit_popup" binds= ["HBox"]]
