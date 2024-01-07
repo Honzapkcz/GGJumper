@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c8x0vcc21s1ph"]
+
+[node name="FloatConstNode" type="GraphNode"]
+custom_minimum_size = Vector2(100, 0)
+offset_right = 9.0
+offset_bottom = 55.0
+title = "Float Constant"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 18
+slot/0/right_color = Color(0.627451, 0.941176, 0.941176, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+metadata/params = 1
+
+[node name="Value" type="SpinBox" parent="."]
+layout_mode = 2
+rounded = true
+allow_greater = true
+allow_lesser = true
