@@ -1,18 +1,6 @@
 extends MarginContainer
 
-enum I {
-	NUL = 00, INT = 01, FLT = 02, BOL = 03,
-	STR = 04, SIG = 05, CAL = 06, CLR = 07,
-	VC2 = 08, VC3 = 09, VC4 = 10, ARR = 11,
-	DCT = 12, OBJ = 32, SCN = 33, TXR = 34,
-	
-}
-enum O {
-	NUL = 16, INT = 17, FLT = 18, BOL = 19,
-	STR = 20, SIG = 21, CAL = 22, CLR = 23,
-	VC2 = 24, VC3 = 25, VC4 = 26, ARR = 27,
-	DCT = 28, OBJ = 48, SCN = 49, TXR = 50,
-}
+
 enum {
 	TYPE_NIL = 0,
 	TYPE_BOOL = 1,
@@ -89,8 +77,10 @@ func _ready():
 	hbox.add_child(butt)
 	hbox.move_child(hbox.get_node("MyButt"), 0)
 	
-	for i in I:
-		graphEdit.add_valid_connection_type(O[i], I[i])
+	for i in range(TYPE_MAX):
+		graphEdit.add_valid_connection_type(i + 64, i)
+	
+	update_properties(Label.new())
 
 func on_hbox_button_pressed(index: int):
 	var node: GraphNode = load(node_prefix + graph_nodes.values()[index]).instantiate()
@@ -107,11 +97,40 @@ func on_textedit_popup(value: String):
 	textedit.text_changed.connect(textpopup.change.bind(textedit))
 	textpopup.init(textedit.text, textedit.get_node("..").name)
 
-func on_textedit_popup_update(value: String, node: Control):
+func on_textedit_popup_update(value: String, node: TextEdit):
 	node.text = value
 	
 func update_properties(object: Object):
-	object
+	for i in grid.get_children():
+		grid.remove_child(i)
+		i.queue_free()
+	var obj_list: Array[Dictionary] = object.get_property_list()
+	# i = {name: String, class_name: StringName, type: int}
+	for i in obj_list:
+		var label: Label = Label.new()
+		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		match i.type:
+			TYPE_BOOL:
+				label.name = i.name + "Label"
+				label.text = i.name.capitalize()
+				grid.add_child(label)
+				var checkbox: CheckBox = CheckBox.new()
+				checkbox.name = i.name
+				checkbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				checkbox.button_pressed = object[i.name]
+				grid.add_child(checkbox)
+			TYPE_INT:
+				label.name = i.name + "Label"
+				label.text = i.name.capitalize()
+				grid.add_child(label)
+			TYPE_FLOAT:
+				label.name = i.name + "Label"
+				label.text = i.name.capitalize()
+				grid.add_child(label)
+			TYPE_STRING:
+				pass
+			TYPE_VECTOR2:
+				pass
 
 func _on_graph_edit_delete_nodes_request(nodes: Array[StringName]):
 	for i in nodes:
