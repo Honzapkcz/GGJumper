@@ -154,6 +154,9 @@ text = "↪"
 layout_mode = 2
 text = "Vector"
 
+[node name="Grid" type="GridContainer" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+layout_mode = 2
+
 [connection signal="dragged" from="LSplit" to="." method="_on_l_split_dragged"]
 [connection signal="resized" from="LSplit/LPanel" to="." method="_on_l_panel_resized"]
 [connection signal="connection_request" from="LSplit/RSplit/VSplit/GraphEdit" to="." method="_on_graph_edit_connection_request"]
