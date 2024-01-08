@@ -107,6 +107,9 @@ func update_properties(object: Object):
 	var obj_list: Array[Dictionary] = object.get_property_list()
 	# i = {name: String, class_name: StringName, type: int}
 	for i in obj_list:
+		if i.usage & PROPERTY_USAGE_NO_EDITOR:
+			continue 
+		
 		var label: Label = Label.new()
 		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		match i.type:
@@ -123,12 +126,28 @@ func update_properties(object: Object):
 				label.name = i.name + "Label"
 				label.text = i.name.capitalize()
 				grid.add_child(label)
+				var spinbox: SpinBox = SpinBox.new()
+				spinbox.allow_greater = true
+				spinbox.allow_lesser = true
+				spinbox.add_theme_icon_override("updown", CompressedTexture2D.new())
+				spinbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				grid.add_child(spinbox)
 			TYPE_FLOAT:
 				label.name = i.name + "Label"
 				label.text = i.name.capitalize()
 				grid.add_child(label)
+				var spinbox: SpinBox = SpinBox.new()
+				spinbox.allow_greater = true
+				spinbox.allow_lesser = true
+				spinbox.step = -1
+				spinbox.add_theme_icon_override("updown", CompressedTexture2D.new())
+				spinbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				grid.add_child(spinbox)
 			TYPE_STRING:
-				pass
+				if i.hint == PROPERTY_HINT_MULTILINE_TEXT:
+					pass
+				else:
+					var lineedit: LineEdit = LineEdit.new()
 			TYPE_VECTOR2:
 				pass
 
