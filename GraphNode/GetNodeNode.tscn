@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://d1f3oa2nnixrb"]
 
-[node name="GetObjectNode" type="GraphNode"]
+[node name="GetNodeNode" type="GraphNode"]
 custom_minimum_size = Vector2(120, 0)
 offset_right = 9.0
 offset_bottom = 55.0
-title = "Get Object"
+title = "Get Node"
 slot/0/left_enabled = false
 slot/0/left_type = 0
 slot/0/left_color = Color(1, 1, 1, 1)
