@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://n1utnbgquhlr"]
+[gd_scene load_steps=7 format=3 uid="uid://n1utnbgquhlr"]
 
 [ext_resource type="PackedScene" uid="uid://dvoqhvtoq3knb" path="res://World.tscn" id="1_6bxky"]
 [ext_resource type="Script" path="res://Scenes/Editor.gd" id="1_msnx6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0qpgm"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ifgso"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ds1wb"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5csk5"]
 
 [node name="Editor" type="MarginContainer"]
 anchors_preset = 15
@@ -109,33 +117,42 @@ text = "On"
 
 [node name="Label2" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Integer"
 
 [node name="SpinBox" type="SpinBox" parent="LSplit/RSplit/RPanel/Margin/Grid"]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/updown = SubResource("CompressedTexture2D_0qpgm")
 allow_greater = true
 allow_lesser = true
 
 [node name="Label3" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Float"
 
 [node name="SpinBox2" type="SpinBox" parent="LSplit/RSplit/RPanel/Margin/Grid"]
 layout_mode = 2
-step = 0.001
+size_flags_horizontal = 3
+theme_override_icons/updown = SubResource("CompressedTexture2D_ifgso")
+step = -1.0
 allow_greater = true
 allow_lesser = true
 
 [node name="Label4" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "String
 "
 
 [node name="LineEdit" type="LineEdit" parent="LSplit/RSplit/RPanel/Margin/Grid"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Label5" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Long String"
 
 [node name="HBox" type="HBoxContainer" parent="LSplit/RSplit/RPanel/Margin/Grid"]
@@ -152,10 +169,38 @@ text = "↪"
 
 [node name="Label6" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Vector"
 
 [node name="Grid" type="GridContainer" parent="LSplit/RSplit/RPanel/Margin/Grid"]
 layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid/Grid"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+text = "x"
+
+[node name="x" type="SpinBox" parent="LSplit/RSplit/RPanel/Margin/Grid/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/updown = SubResource("CompressedTexture2D_ds1wb")
+step = -1.0
+allow_greater = true
+allow_lesser = true
+
+[node name="Label2" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid/Grid"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+text = "y"
+
+[node name="y" type="SpinBox" parent="LSplit/RSplit/RPanel/Margin/Grid/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/updown = SubResource("CompressedTexture2D_5csk5")
+step = -1.0
+allow_greater = true
+allow_lesser = true
 
 [connection signal="dragged" from="LSplit" to="." method="_on_l_split_dragged"]
 [connection signal="resized" from="LSplit/LPanel" to="." method="_on_l_panel_resized"]
