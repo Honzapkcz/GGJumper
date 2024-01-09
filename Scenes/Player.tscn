@@ -48,9 +48,9 @@ polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Button" type="Button" parent="CanvasLayer"]
-offset_top = -14.0
-offset_right = 85.0
-offset_bottom = 63.0
+offset_right = 86.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
 shortcut = SubResource("Shortcut_4iau5")
 text = "Esc"
