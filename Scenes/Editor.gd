@@ -153,6 +153,15 @@ func update_properties(object: Object):
 				if i.hint == PROPERTY_HINT_MULTILINE_TEXT:
 					var hbox: HBoxContainer = HBoxContainer.new()
 					hbox.name = i.name
+					hbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+					var textedit: TextEdit = TextEdit.new()
+					textedit.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+					textedit.custom_minimum_size.y = 50
+					hbox.add_child(textedit)
+					var button: Button = Button.new()
+					button.text = "↪"
+					button.pressed.connect(on_textedit_popup.bind(i.name))
+					hbox.add_child(button)
 				else:
 					var lineedit: LineEdit = LineEdit.new()
 					lineedit.name = i.name
