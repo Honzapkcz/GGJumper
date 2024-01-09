@@ -127,8 +127,10 @@ func update_properties(object: Object):
 				label.text = i.name.capitalize()
 				grid.add_child(label)
 				var spinbox: SpinBox = SpinBox.new()
+				spinbox.name = i.name
 				spinbox.allow_greater = true
 				spinbox.allow_lesser = true
+				spinbox.select_all_on_focus = true
 				spinbox.add_theme_icon_override("updown", CompressedTexture2D.new())
 				spinbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 				grid.add_child(spinbox)
@@ -137,17 +139,25 @@ func update_properties(object: Object):
 				label.text = i.name.capitalize()
 				grid.add_child(label)
 				var spinbox: SpinBox = SpinBox.new()
+				spinbox.name = i.name
 				spinbox.allow_greater = true
 				spinbox.allow_lesser = true
 				spinbox.step = -1
+				spinbox.select_all_on_focus = true
 				spinbox.add_theme_icon_override("updown", CompressedTexture2D.new())
 				spinbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 				grid.add_child(spinbox)
 			TYPE_STRING:
+				label.name = i.name + "Label"
+				label.text = i.name.capitalize()
 				if i.hint == PROPERTY_HINT_MULTILINE_TEXT:
-					pass
+					var hbox: HBoxContainer = HBoxContainer.new()
+					hbox.name = i.name
 				else:
 					var lineedit: LineEdit = LineEdit.new()
+					lineedit.name = i.name
+					lineedit.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+					grid.add_child(lineedit)
 			TYPE_VECTOR2:
 				pass
 
