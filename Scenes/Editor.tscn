@@ -85,7 +85,6 @@ show_zoom_buttons = false
 show_grid_buttons = false
 
 [node name="RPanel" type="Panel" parent="LSplit/RSplit"]
-clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -98,41 +97,46 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Grid" type="GridContainer" parent="LSplit/RSplit/RPanel/Margin"]
+[node name="ScrollContainer" type="ScrollContainer" parent="LSplit/RSplit/RPanel/Margin"]
 layout_mode = 2
+horizontal_scroll_mode = 3
+
+[node name="Grid" type="GridContainer" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 columns = 2
 
-[node name="Label" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+[node name="Label" type="Label" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Boolean"
 
-[node name="CheckBox" type="CheckBox" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+[node name="CheckBox" type="CheckBox" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "On"
 
-[node name="Label2" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+[node name="Label2" type="Label" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Integer"
 
-[node name="SpinBox" type="SpinBox" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+[node name="SpinBox" type="SpinBox" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_icons/updown = SubResource("CompressedTexture2D_0qpgm")
 allow_greater = true
 allow_lesser = true
 
-[node name="Label3" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+[node name="Label3" type="Label" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Float"
 
-[node name="SpinBox2" type="SpinBox" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+[node name="SpinBox2" type="SpinBox" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_icons/updown = SubResource("CompressedTexture2D_ifgso")
@@ -140,48 +144,48 @@ step = -1.0
 allow_greater = true
 allow_lesser = true
 
-[node name="Label4" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+[node name="Label4" type="Label" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "String
 "
 
-[node name="LineEdit" type="LineEdit" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+[node name="LineEdit" type="LineEdit" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label5" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+[node name="Label5" type="Label" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Long String"
 
-[node name="HBox" type="HBoxContainer" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+[node name="HBox" type="HBoxContainer" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid"]
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="LSplit/RSplit/RPanel/Margin/Grid/HBox"]
+[node name="TextEdit" type="TextEdit" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid/HBox"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="LSplit/RSplit/RPanel/Margin/Grid/HBox"]
+[node name="Button" type="Button" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid/HBox"]
 layout_mode = 2
 text = "↪"
 
-[node name="Label6" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+[node name="Label6" type="Label" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Vector"
 
-[node name="Grid" type="GridContainer" parent="LSplit/RSplit/RPanel/Margin/Grid"]
+[node name="Grid" type="GridContainer" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid"]
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid/Grid"]
+[node name="Label" type="Label" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid/Grid"]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 text = "x"
 
-[node name="x" type="SpinBox" parent="LSplit/RSplit/RPanel/Margin/Grid/Grid"]
+[node name="x" type="SpinBox" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_icons/updown = SubResource("CompressedTexture2D_ds1wb")
@@ -189,12 +193,12 @@ step = -1.0
 allow_greater = true
 allow_lesser = true
 
-[node name="Label2" type="Label" parent="LSplit/RSplit/RPanel/Margin/Grid/Grid"]
+[node name="Label2" type="Label" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid/Grid"]
 modulate = Color(0, 1, 0, 1)
 layout_mode = 2
 text = "y"
 
-[node name="y" type="SpinBox" parent="LSplit/RSplit/RPanel/Margin/Grid/Grid"]
+[node name="y" type="SpinBox" parent="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid/Grid"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_icons/updown = SubResource("CompressedTexture2D_5csk5")
@@ -212,4 +216,4 @@ allow_lesser = true
 [connection signal="node_deselected" from="LSplit/RSplit/VSplit/GraphEdit" to="." method="_on_graph_edit_node_deselected"]
 [connection signal="node_selected" from="LSplit/RSplit/VSplit/GraphEdit" to="." method="_on_graph_edit_node_selected"]
 [connection signal="paste_nodes_request" from="LSplit/RSplit/VSplit/GraphEdit" to="." method="_on_graph_edit_paste_nodes_request"]
-[connection signal="pressed" from="LSplit/RSplit/RPanel/Margin/Grid/HBox/Button" to="." method="on_textedit_popup" binds= ["HBox"]]
+[connection signal="pressed" from="LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid/HBox/Button" to="." method="on_textedit_popup" binds= ["HBox"]]
