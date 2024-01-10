@@ -1,5 +1,14 @@
-malé posunutí mapy/objektů proto natrénování mapy -> ztěžení
-pohybující se objekty
+
+## TODO
+
+1. General GamePlay
+  - [X] malé posunutí mapy/objektů proto natrénování mapy -> ztěžení
+  - [ ] Moving Objects
+2. Editor - Properties
+  - [ ] Groups / Supgroups
+  - [ ] Enums
+3. Editor - Scene Tree
+  - [ ] Make this TODO lsit
 
 ## DATA
 
