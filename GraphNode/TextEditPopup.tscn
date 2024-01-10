@@ -7,6 +7,8 @@ title = "TextEditPopup"
 initial_position = 2
 size = Vector2i(250, 150)
 popup_window = true
+content_scale_size = Vector2i(500, 300)
+content_scale_aspect = 4
 script = ExtResource("1_4eooa")
 
 [node name="TextEdit" type="TextEdit" parent="."]
@@ -15,5 +17,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 24
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
