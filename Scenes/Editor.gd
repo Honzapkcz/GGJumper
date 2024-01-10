@@ -107,8 +107,10 @@ func update_properties(object: Object):
 	var obj_list: Array[Dictionary] = object.get_property_list()
 	# i = {name: String, class_name: StringName, type: int}
 	for i in obj_list:
-		if i.usage & PROPERTY_USAGE_NO_EDITOR:
-			continue 
+		if i.usage & PROPERTY_USAGE_NONE:
+			continue
+		print("; ".join([i.name, i.class_name, i.type, i.hint, i.hint_string, i.usage]))
+		#i.name = i.name.lstrip("theme_override_")
 		
 		var label: Label = Label.new()
 		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -120,7 +122,7 @@ func update_properties(object: Object):
 				var checkbox: CheckBox = CheckBox.new()
 				checkbox.name = i.name
 				checkbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-				checkbox.button_pressed = object[i.name]
+				checkbox.button_pressed = false# object[i.name]
 				grid.add_child(checkbox)
 			TYPE_INT:
 				label.name = i.name + "Label"
