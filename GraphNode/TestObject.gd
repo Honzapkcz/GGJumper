@@ -1,3 +1,5 @@
+## Thanks to Godot Docs for fabulous documentation
+## Everything copied from there
 @icon("res://icon.png")
 extends Object
 
