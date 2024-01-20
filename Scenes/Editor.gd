@@ -49,7 +49,7 @@ enum {
 @onready var lpanel: Panel = $LSplit/LPanel
 @onready var rpanel: Panel = $LSplit/RSplit/RPanel
 @onready var tree: Tree = $LSplit/LPanel/Margin/VBox/Tree
-@onready var grid: GridContainer = $LSplit/RSplit/RPanel/Margin/Grid
+@onready var grid: GridContainer = $LSplit/RSplit/RPanel/Margin/ScrollContainer/Grid
 
 @export var node_prefix: String = "res://GraphNode/"
 @export var graph_nodes: Dictionary = {
@@ -80,7 +80,7 @@ func _ready():
 	for i in range(TYPE_MAX):
 		graphEdit.add_valid_connection_type(i + 64, i)
 	
-	update_properties(Label.new())
+	update_properties(Player.new())
 
 func on_hbox_button_pressed(index: int):
 	var node: GraphNode = load(node_prefix + graph_nodes.values()[index]).instantiate()
@@ -113,6 +113,7 @@ func update_properties(object: Object):
 		#i.name = i.name.lstrip("theme_override_")
 		
 		var label: Label = Label.new()
+		label.clip_text = true
 		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		match i.type:
 			TYPE_BOOL:
@@ -121,6 +122,7 @@ func update_properties(object: Object):
 				grid.add_child(label)
 				var checkbox: CheckBox = CheckBox.new()
 				checkbox.name = i.name
+				checkbox.text = "On"
 				checkbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 				checkbox.button_pressed = false# object[i.name]
 				grid.add_child(checkbox)
@@ -152,7 +154,7 @@ func update_properties(object: Object):
 			TYPE_STRING:
 				label.name = i.name + "Label"
 				label.text = i.name.capitalize()
-				if i.hint == PROPERTY_HINT_MULTILINE_TEXT:
+				if i.hint != PROPERTY_HINT_MULTILINE_TEXT:
 					var hbox: HBoxContainer = HBoxContainer.new()
 					hbox.name = i.name
 					hbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -165,6 +167,7 @@ func update_properties(object: Object):
 					button.pressed.connect(on_textedit_popup.bind(i.name))
 					hbox.add_child(button)
 				else:
+					grid.add_child(label)
 					var lineedit: LineEdit = LineEdit.new()
 					lineedit.name = i.name
 					lineedit.size_flags_horizontal = Control.SIZE_EXPAND_FILL
