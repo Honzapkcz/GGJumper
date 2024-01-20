@@ -15,7 +15,6 @@ script = ExtResource("1_5m566")
 texture = ExtResource("1_apsvr")
 region_enabled = true
 region_rect = Rect2(40, 32, 16, 32)
-region_filter_clip_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_43bnv")
