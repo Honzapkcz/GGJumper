@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvyi250s6awjf"]
+[gd_scene load_steps=5 format=3 uid="uid://bvyi250s6awjf"]
 
 [ext_resource type="PackedScene" uid="uid://dvoqhvtoq3knb" path="res://World.tscn" id="1_11i7v"]
 [ext_resource type="PackedScene" uid="uid://d0a05mms43kmy" path="res://Objects/Teleport.tscn" id="2_obfxh"]
 [ext_resource type="PackedScene" uid="uid://cucaj6fv4kwd" path="res://Objects/Key.tscn" id="3_u8lnj"]
+[ext_resource type="PackedScene" uid="uid://dxcscnvkhggrl" path="res://Objects/Door.tscn" id="4_2jwf8"]
 
 [node name="World1" instance=ExtResource("1_11i7v")]
 
@@ -15,3 +16,8 @@ scene_destination = "res://Worlds/world_1.tscn"
 
 [node name="Key" parent="." index="3" instance=ExtResource("3_u8lnj")]
 position = Vector2(320, -264)
+
+[node name="Door" parent="." index="4" instance=ExtResource("4_2jwf8")]
+position = Vector2(416, 32)
+scale = Vector2(2, 4)
+item_id = "Key"
