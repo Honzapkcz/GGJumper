@@ -18,4 +18,5 @@ position = Vector2(1696, -384)
 level = 2
 
 [node name="Teleport" parent="." index="4" instance=ExtResource("3_vanbg")]
+position = Vector2(3040, -288)
 scene_destination = "res://Worlds/Lobby.tscn"
