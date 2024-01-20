@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://ct6b2ay6tvnm"]
+[gd_scene load_steps=2 format=3 uid="uid://ct6b2ay6tvnm"]
+
+[ext_resource type="Script" path="res://Objects/NotGate.gd" id="1_naygy"]
 
 [node name="NOTGate" type="Node"]
+script = ExtResource("1_naygy")
