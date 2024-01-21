@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d35ktivmfhe0o"]
+
+[ext_resource type="Script" path="res://Objects/OrGate.gd" id="1_qxnia"]
+
+[node name="ORGate" type="Node"]
+script = ExtResource("1_qxnia")
