@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://diarcsrg54os4"]
+
+[ext_resource type="Texture2D" uid="uid://dh5bq5rg4x4dy" path="res://tilemap.png" id="1_84jn8"]
+
+[node name="Button" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_84jn8")
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
