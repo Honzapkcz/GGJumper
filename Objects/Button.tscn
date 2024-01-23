@@ -1,13 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://diarcsrg54os4"]
+[gd_scene load_steps=4 format=3 uid="uid://diarcsrg54os4"]
 
 [ext_resource type="Texture2D" uid="uid://dh5bq5rg4x4dy" path="res://tilemap.png" id="1_84jn8"]
+[ext_resource type="Script" path="res://Objects/Button.gd" id="1_ypjwn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ws6dp"]
+size = Vector2(64, 16)
 
 [node name="Button" type="Area2D"]
+script = ExtResource("1_ypjwn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(0, -32)
+scale = Vector2(2, 2)
 texture = ExtResource("1_84jn8")
 region_enabled = true
 region_rect = Rect2(0, 32, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_ws6dp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
