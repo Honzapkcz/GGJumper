@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -400.0
 const FRICTION = 20
 const FRICTION2 = 30
 const EYE_OFFSET = 48
+const PUSH_FORCE = 1000
 @onready var eye1_pos = $Eye1.position
 @onready var eye2_pos = $Eye2.position
 
@@ -15,10 +16,11 @@ enum {
 	DISABLED,
 }
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var state = WALK
+var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var state: int = WALK
+var vel: Vector2
 
-func _physics_process(delta):
+func _physics_process(delta: float):
 	# Add the gravity.
 	match state:
 		WALK:
@@ -26,7 +28,13 @@ func _physics_process(delta):
 		CLIMB:
 			climb(delta)
 	
-func walk(delta):
+	for i: int in range(get_slide_collision_count()):
+		var c: KinematicCollision2D = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			c.get_collider().apply_force(c.get_normal() * PUSH_FORCE * velocity)#, c.get_position())
+			print(velocity)
+	
+func walk(delta: float):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
