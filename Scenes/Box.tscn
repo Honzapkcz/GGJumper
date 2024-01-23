@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://sbnvsosfngip"]
+[gd_scene load_steps=4 format=3 uid="uid://sbnvsosfngip"]
 
 [ext_resource type="Texture2D" uid="uid://dh5bq5rg4x4dy" path="res://tilemap.png" id="1_e7qky"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4x5nf"]
+friction = 0.25
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyeo2"]
 size = Vector2(63, 63)
@@ -8,6 +11,8 @@ size = Vector2(63, 63)
 [node name="Box" type="RigidBody2D"]
 collision_layer = 3
 collision_mask = 3
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_4x5nf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
