@@ -1,5 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdivtiue5o0il"]
+[gd_scene load_steps=5 format=3 uid="uid://bdivtiue5o0il"]
 
 [ext_resource type="PackedScene" uid="uid://dvoqhvtoq3knb" path="res://World.tscn" id="1_y61k4"]
+[ext_resource type="PackedScene" uid="uid://diarcsrg54os4" path="res://Objects/Button.tscn" id="2_4g64n"]
+[ext_resource type="PackedScene" uid="uid://dxcscnvkhggrl" path="res://Objects/Door.tscn" id="3_3aq4c"]
+[ext_resource type="PackedScene" uid="uid://sbnvsosfngip" path="res://Scenes/Box.tscn" id="4_5rl7k"]
 
 [node name="World" instance=ExtResource("1_y61k4")]
+
+[node name="TileMap" parent="." index="1"]
+layer_0/tile_data = PackedInt32Array(196601, 0, 0, 262137, 0, 0, 196602, 0, 0, 262138, 0, 0, 196603, 0, 0, 262139, 0, 0, 196604, 0, 0, 262140, 0, 0, 196605, 0, 0, 262141, 0, 0, 196606, 0, 0, 262142, 0, 0, 196607, 0, 0, 262143, 0, 0, 131072, 0, 0, 196608, 0, 0, 131073, 0, 0, 196609, 0, 0, 131074, 0, 0, 196610, 0, 0, 131075, 0, 0, 196611, 0, 0, 131076, 0, 0, 196612, 0, 0, 131077, 0, 0, 196613, 0, 0, 131078, 0, 0, 196614, 0, 0, 131079, 0, 0, 196615, 0, 0, 131080, 0, 0, 196616, 0, 0, 131081, 0, 0, 196617, 0, 0, 131082, 0, 0, 196618, 0, 0, 131083, 0, 0, 196619, 0, 0, 131084, 0, 0, 196620, 0, 0, 131085, 0, 0, 196621, 0, 0, 131086, 0, 0, 196622, 0, 0)
+
+[node name="Button" parent="." index="2" instance=ExtResource("2_4g64n")]
+position = Vector2(160, 64)
+object_id = "0"
+
+[node name="Door" parent="." index="3" instance=ExtResource("3_3aq4c")]
+position = Vector2(288, -32)
+scale = Vector2(2, 6)
+object_id = "0"
+
+[node name="Box" parent="." index="4" instance=ExtResource("4_5rl7k")]
+position = Vector2(-96, -32)
