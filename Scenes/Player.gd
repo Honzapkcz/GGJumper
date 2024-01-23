@@ -1,14 +1,14 @@
 extends CharacterBody2D
 class_name Player
 
-const SPEED = 30000.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 30000
+const JUMP_VELOCITY = -400
 const FRICTION = 20
 const FRICTION2 = 30
 const EYE_OFFSET = 48
 const PUSH_FORCE = 1000
-@onready var eye1_pos = $Eye1.position
-@onready var eye2_pos = $Eye2.position
+@onready var eye1_pos: Vector2 = $Eye1.position
+@onready var eye2_pos: Vector2 = $Eye2.position
 
 enum {
 	WALK,
@@ -31,7 +31,7 @@ func _physics_process(delta: float):
 	for i: int in range(get_slide_collision_count()):
 		var c: KinematicCollision2D = get_slide_collision(i)
 		if c.get_collider() is RigidBody2D:
-			c.get_collider().apply_force(c.get_normal() * PUSH_FORCE * velocity)#, c.get_position())
+			c.get_collider().apply_force(-c.get_normal() * PUSH_FORCE)#, c.get_position())
 			print(velocity)
 	
 func walk(delta: float):
@@ -44,13 +44,15 @@ func walk(delta: float):
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("Left", "Right")
+	var direction: float = Input.get_axis("Left", "Right")
 	if direction:
 		velocity.x = move_toward(velocity.x, direction * SPEED * delta, FRICTION)
 	else:
 		velocity.x = move_toward(velocity.x, 0, FRICTION2)
 	$Eye1.position = eye1_pos + velocity / EYE_OFFSET
 	$Eye2.position = eye2_pos + velocity / EYE_OFFSET
+	
+	vel = velocity
 
 	move_and_slide()
 
