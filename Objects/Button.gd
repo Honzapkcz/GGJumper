@@ -22,4 +22,4 @@ func _on_body_exited(body: Node2D):
 	Global.latch.emit(false, object_id, object_group)
 
 func on_animate(clock: int):
-	get_tree().create_tween().tween_property($Sprite2D, "position:y", -16 - 16 * int(not state), 0.5).set_trans(Tween.TRANS_CUBIC)
+	get_tree().create_tween().tween_property($Sprite2D, "position:y", -16 - 16 * int(not state), Global.anim_speed).set_trans(Tween.TRANS_CUBIC)
