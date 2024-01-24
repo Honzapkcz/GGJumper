@@ -18,7 +18,7 @@ physics_material_override = SubResource("PhysicsMaterial_4x5nf")
 scale = Vector2(2, 2)
 texture = ExtResource("1_e7qky")
 region_enabled = true
-region_rect = Rect2(0, 0, 32, 32)
+region_rect = Rect2(96, 32, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_iyeo2")
