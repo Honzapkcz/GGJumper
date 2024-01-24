@@ -1,6 +1,7 @@
 extends Node
 
 @export var clock_time: float
+@export var anim_speed: float
 
 signal respawn()
 signal checkpoint(pos: Vector2, level: int)

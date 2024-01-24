@@ -4,4 +4,5 @@
 
 [node name="Global" type="Node"]
 script = ExtResource("1_quo8r")
-clock_time = 1.0
+clock_time = 0.5
+anim_speed = 0.5
