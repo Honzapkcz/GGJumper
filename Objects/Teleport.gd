@@ -11,7 +11,7 @@ extends Area2D
 @export_node_path("CanvasItem") var node_position_destination: NodePath
 
 var can_teleport: bool = false
-var last_body
+var last_body: Object
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("Select") and can_teleport:
