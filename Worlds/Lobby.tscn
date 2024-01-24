@@ -51,6 +51,7 @@ shape = SubResource("RectangleShape2D_yinnu")
 
 [node name="Wiggle" parent="." index="8" instance=ExtResource("4_okysn")]
 wiggle = Vector2(0, 8)
+clock_multiplier = 2
 
 [node name="Label2" type="Label" parent="Wiggle" index="0"]
 offset_left = 196.0
