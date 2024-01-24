@@ -19,4 +19,4 @@ level = 2
 
 [node name="Teleport" parent="." index="4" instance=ExtResource("3_vanbg")]
 position = Vector2(3040, -288)
-scene_destination = "res://Worlds/Lobby.tscn"
+scene_destination = "res://Worlds/world_4.tscn"

@@ -36,3 +36,4 @@ level = 1
 
 [node name="Teleport" parent="Checkpoint" index="1" instance=ExtResource("4_4r8bl")]
 position = Vector2(1216, -320)
+scene_destination = "res://Worlds/world_5.tscn"
