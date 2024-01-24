@@ -18,7 +18,7 @@ func _ready():
 	Global.pick.connect(on_pick)
 
 func on_animate(clock: int):
-	get_tree().create_tween().tween_property($Sprite2D, "modulate", Color(1, 1, 1, 0) if state else Color(1, 1, 1, 1), 1.0)
+	get_tree().create_tween().tween_property($Sprite2D, "modulate", Color(1, 1, 1, 0) if state else Color(1, 1, 1, 1), Global.anim_speed)
 
 func on_latch(on: bool, id: String, group: String):
 	if id != object_id and group != object_group:
