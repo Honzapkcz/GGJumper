@@ -53,7 +53,7 @@ func _ready():
 
 func on_animate(clock: int):
 	get_tree().create_tween().tween_property(self, "position",
-		wiggle if clock % 2 else -wiggle, 1.0
+		wiggle if clock % 2 else -wiggle, Global.anim_speed
 		).set_trans(otrans[transition]
 		).set_ease(oease[ease]
 		).set_delay(delay)
