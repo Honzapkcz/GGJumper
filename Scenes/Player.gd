@@ -11,9 +11,10 @@ const PUSH_FORCE = 1000
 @onready var eye2_pos: Vector2 = $Eye2.position
 
 enum {
+	DISABLED,
 	WALK,
 	CLIMB,
-	DISABLED,
+	STAND,
 }
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -32,7 +33,6 @@ func _physics_process(delta: float):
 		var c: KinematicCollision2D = get_slide_collision(i)
 		if c.get_collider() is RigidBody2D:
 			c.get_collider().apply_force(-c.get_normal() * PUSH_FORCE)#, c.get_position())
-			print(velocity)
 	
 func walk(delta: float):
 	if not is_on_floor():
