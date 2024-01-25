@@ -48,7 +48,6 @@ polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Button" type="Button" parent="CanvasLayer"]
-anchors_preset = -1
 offset_top = -14.0
 offset_right = 86.0
 offset_bottom = 64.0
