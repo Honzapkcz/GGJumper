@@ -44,11 +44,11 @@ scene_destination = "res://Worlds/world_3.tscn"
 
 [node name="Teleport4" parent="." index="7" instance=ExtResource("2_pae72")]
 position = Vector2(608, 0)
-scene_destination = "res://Worlds/world_3.tscn"
+scene_destination = "res://Worlds/world_4.tscn"
 
 [node name="Teleport5" parent="." index="8" instance=ExtResource("2_pae72")]
 position = Vector2(736, 0)
-scene_destination = "res://Worlds/world_3.tscn"
+scene_destination = "res://Worlds/world_5.tscn"
 
 [node name="Area2D" type="Area2D" parent="." index="9"]
 script = ExtResource("3_1jls3")
