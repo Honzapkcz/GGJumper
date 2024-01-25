@@ -16,6 +16,7 @@ scene_destination = "res://Worlds/world_1.tscn"
 
 [node name="Key" parent="." index="3" instance=ExtResource("3_u8lnj")]
 position = Vector2(320, -264)
+item_id = "Key"
 
 [node name="Door" parent="." index="4" instance=ExtResource("4_2jwf8")]
 position = Vector2(416, 32)
