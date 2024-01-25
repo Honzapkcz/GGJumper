@@ -6,6 +6,7 @@
 layer = 2
 script = ExtResource("1_xxkbn")
 speed = 1.0
+sleep = 0.25
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
