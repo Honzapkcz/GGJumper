@@ -26,6 +26,8 @@ func _physics_process(delta: float):
 	match state:
 		WALK:
 			walk(delta)
+		STAND:
+			walk(delta)
 		CLIMB:
 			climb(delta)
 	
