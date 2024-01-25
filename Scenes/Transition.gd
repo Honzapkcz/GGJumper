@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @export var speed: float
+@export var sleep: float
 
 var proccesing: bool = false
 
@@ -18,6 +19,7 @@ func change_scene(path: String):
 	tween.tween_property($ColorRect, "position:x", 0, speed).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_callback(get_tree().change_scene_to_file.bind(path))
 	#tween.tween_property($ColorRect, "position:x", 0, 0)
+	tween.tween_interval(sleep)
 	tween.tween_property($ColorRect, "position:x", -$ColorRect.size.x, speed).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property($ColorRect, "visible", false, 0)
 	tween.tween_property(self, "proccesing", false, 0)
