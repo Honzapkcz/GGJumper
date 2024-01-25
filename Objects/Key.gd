@@ -2,7 +2,7 @@ extends Area2D
 class_name Key
 
 
-@export var item_id: String = "Key"
+@export var item_id: String
 const wiggle: float = 8
 
 func _ready():
