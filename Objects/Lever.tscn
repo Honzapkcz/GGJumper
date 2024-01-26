@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://sivqjq6k4l8e"]
+[gd_scene load_steps=4 format=3 uid="uid://sivqjq6k4l8e"]
+
+[ext_resource type="Script" path="res://Objects/Lever.gd" id="1_gp1ar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xxmaj"]
 size = Vector2(64, 64)
@@ -8,6 +10,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0179105, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Lever" type="Area2D"]
+script = ExtResource("1_gp1ar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xxmaj")
