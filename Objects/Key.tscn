@@ -14,6 +14,7 @@ script = ExtResource("1_sse0i")
 shape = SubResource("RectangleShape2D_tints")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.752941, 0.752941, 0.752941, 1)
 texture = ExtResource("1_nhayv")
 region_enabled = true
 region_rect = Rect2(64, 32, 32, 32)
