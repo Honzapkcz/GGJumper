@@ -10,9 +10,11 @@
 
 [node name="Button" parent="." index="0" instance=ExtResource("2_4g64n")]
 position = Vector2(96, 128)
+object_id = "0"
 
 [node name="Button2" parent="." index="1" instance=ExtResource("2_4g64n")]
 position = Vector2(608, 128)
+object_id = "1"
 
 [node name="Door" parent="." index="2" instance=ExtResource("3_3aq4c")]
 position = Vector2(288, -32)
