@@ -29,5 +29,6 @@ func on_latch(on: bool, id: String, group: String):
 	$CollisionShape2D.disabled = state
 
 func on_respawn():
-	position = origin
-	position += Vector2(randf_range(-respawn_offset.x, respawn_offset.x), randf_range(-respawn_offset.y, respawn_offset.y))
+	var pos = origin
+	pos += Vector2(randf_range(-respawn_offset.x, respawn_offset.x), randf_range(-respawn_offset.y, respawn_offset.y))
+	get_tree().create_tween().tween_property(self, ^"position", pos, Global.anim_speed * 2).set_trans(Tween.TRANS_CUBIC)
