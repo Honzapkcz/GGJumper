@@ -30,16 +30,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 200
 text = "GG   Jump"
 
-[node name="Label6" type="Label" parent="." index="4"]
-offset_left = -368.0
-offset_top = 8.0
-offset_right = -278.0
-offset_bottom = 152.0
-theme_override_font_sizes/font_size = 50
-text = "Exit
-  ↓"
-
-[node name="Label4" type="Label" parent="." index="5"]
+[node name="Label4" type="Label" parent="." index="4"]
 offset_left = -224.0
 offset_top = 92.0
 offset_right = 114.0
@@ -51,88 +42,97 @@ E - Interakce
 Esc - Menu
 "
 
-[node name="Teleport" parent="." index="6" instance=ExtResource("2_pae72")]
+[node name="Teleport" parent="." index="5" instance=ExtResource("2_pae72")]
 position = Vector2(224, 0)
 scene_destination = "res://Worlds/world_1.tscn"
 
-[node name="Teleport2" parent="." index="7" instance=ExtResource("2_pae72")]
+[node name="Teleport2" parent="." index="6" instance=ExtResource("2_pae72")]
 position = Vector2(352, 0)
 scene_destination = "res://Worlds/world_2.tscn"
 
-[node name="Teleport3" parent="." index="8" instance=ExtResource("2_pae72")]
+[node name="Teleport3" parent="." index="7" instance=ExtResource("2_pae72")]
 position = Vector2(482, 0)
 scene_destination = "res://Worlds/world_3.tscn"
 
-[node name="Teleport4" parent="." index="9" instance=ExtResource("2_pae72")]
+[node name="Teleport4" parent="." index="8" instance=ExtResource("2_pae72")]
 position = Vector2(608, 0)
 scene_destination = "res://Worlds/world_4.tscn"
 
-[node name="Teleport5" parent="." index="10" instance=ExtResource("2_pae72")]
+[node name="Teleport5" parent="." index="9" instance=ExtResource("2_pae72")]
 position = Vector2(736, 0)
 scene_destination = "res://Worlds/world_5.tscn"
 
-[node name="Teleport6" parent="." index="11" instance=ExtResource("2_pae72")]
+[node name="Teleport6" parent="." index="10" instance=ExtResource("2_pae72")]
 position = Vector2(864, 0)
 scene_destination = "res://Worlds/world_6.tscn"
 
-[node name="Teleport7" parent="." index="12" instance=ExtResource("2_pae72")]
+[node name="Teleport7" parent="." index="11" instance=ExtResource("2_pae72")]
 position = Vector2(992, 0)
-scene_destination = "res://Worlds/world_6.tscn"
+scene_destination = "res://Worlds/world_7.tscn"
 
-[node name="Area2D" type="Area2D" parent="." index="13"]
+[node name="Area2D" type="Area2D" parent="." index="12"]
 script = ExtResource("3_1jls3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(-320, 272)
 shape = SubResource("RectangleShape2D_yinnu")
 
-[node name="Wiggle" parent="." index="14" instance=ExtResource("4_okysn")]
+[node name="Wiggle" parent="." index="13" instance=ExtResource("4_okysn")]
 wiggle = Vector2(0, 8)
 clock_multiplier = 2
 
-[node name="Label2" type="Label" parent="Wiggle" index="0"]
+[node name="Label11" type="Label" parent="Wiggle" index="0"]
+offset_left = -355.0
+offset_top = 144.0
+offset_right = -194.0
+offset_bottom = 288.0
+rotation = -1.5708
+theme_override_font_sizes/font_size = 50
+text = "<= Exit"
+
+[node name="Label2" type="Label" parent="Wiggle" index="1"]
 offset_left = 196.0
 offset_top = -65.0
 offset_right = 250.0
 offset_bottom = -39.0
 text = "Level 1"
 
-[node name="Label3" type="Label" parent="Wiggle" index="1"]
+[node name="Label3" type="Label" parent="Wiggle" index="2"]
 offset_left = 326.0
 offset_top = -65.0
 offset_right = 380.0
 offset_bottom = -39.0
 text = "Level 2"
 
-[node name="Label6" type="Label" parent="Wiggle" index="2"]
+[node name="Label6" type="Label" parent="Wiggle" index="3"]
 offset_left = 456.0
 offset_top = -65.0
 offset_right = 510.0
 offset_bottom = -39.0
 text = "Level 3"
 
-[node name="Label7" type="Label" parent="Wiggle" index="3"]
+[node name="Label7" type="Label" parent="Wiggle" index="4"]
 offset_left = 584.0
 offset_top = -64.0
 offset_right = 638.0
 offset_bottom = -38.0
 text = "Level 4"
 
-[node name="Label8" type="Label" parent="Wiggle" index="4"]
+[node name="Label8" type="Label" parent="Wiggle" index="5"]
 offset_left = 712.0
 offset_top = -64.0
 offset_right = 766.0
 offset_bottom = -38.0
 text = "Level 5"
 
-[node name="Label9" type="Label" parent="Wiggle" index="5"]
+[node name="Label9" type="Label" parent="Wiggle" index="6"]
 offset_left = 840.0
 offset_top = -64.0
 offset_right = 894.0
 offset_bottom = -38.0
 text = "Level 6"
 
-[node name="Label10" type="Label" parent="Wiggle" index="6"]
+[node name="Label10" type="Label" parent="Wiggle" index="7"]
 offset_left = 968.0
 offset_top = -64.0
 offset_right = 1022.0

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="GG Jump"
 config/description="Glorious Game: Jump"
-run/main_scene="res://Worlds/world_1.tscn"
+run/main_scene="res://Worlds/Lobby.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.png"
 config/windows_native_icon="res://Assets/icon.ico"
@@ -24,6 +24,7 @@ Transition="*res://Scenes/Transition.tscn"
 
 [display]
 
+window/size/mode=4
 window/size/window_width_override=2304
 window/size/window_height_override=1296
 window/stretch/mode="canvas_items"
