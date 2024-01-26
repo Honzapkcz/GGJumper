@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://davchb7we5ou1"]
 
-[ext_resource type="PackedScene" uid="uid://dvoqhvtoq3knb" path="res://World.tscn" id="1_we0x8"]
+[ext_resource type="PackedScene" uid="uid://dvoqhvtoq3knb" path="res://Scenes/World.tscn" id="1_we0x8"]
 [ext_resource type="PackedScene" uid="uid://cvalfgrl3fgh6" path="res://Objects/Checkpoint.tscn" id="2_7a7xw"]
 [ext_resource type="PackedScene" uid="uid://d0a05mms43kmy" path="res://Objects/Teleport.tscn" id="3_vanbg"]
 

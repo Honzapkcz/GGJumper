@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://n1utnbgquhlr"]
 
-[ext_resource type="PackedScene" uid="uid://dvoqhvtoq3knb" path="res://World.tscn" id="1_6bxky"]
+[ext_resource type="PackedScene" uid="uid://dvoqhvtoq3knb" path="res://Scenes/World.tscn" id="1_6bxky"]
 [ext_resource type="Script" path="res://Scenes/Editor.gd" id="1_msnx6"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0qpgm"]

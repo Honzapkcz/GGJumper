@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bdivtiue5o0il"]
 
-[ext_resource type="PackedScene" uid="uid://dvoqhvtoq3knb" path="res://World.tscn" id="1_y61k4"]
+[ext_resource type="PackedScene" uid="uid://dvoqhvtoq3knb" path="res://Scenes/World.tscn" id="1_y61k4"]
 [ext_resource type="PackedScene" uid="uid://diarcsrg54os4" path="res://Objects/Button.tscn" id="2_4g64n"]
 [ext_resource type="PackedScene" uid="uid://dxcscnvkhggrl" path="res://Objects/Door.tscn" id="3_3aq4c"]
 [ext_resource type="PackedScene" uid="uid://sbnvsosfngip" path="res://Scenes/Box.tscn" id="4_5rl7k"]
@@ -10,11 +10,9 @@
 
 [node name="Button" parent="." index="0" instance=ExtResource("2_4g64n")]
 position = Vector2(96, 128)
-object_id = "0"
 
 [node name="Button2" parent="." index="1" instance=ExtResource("2_4g64n")]
 position = Vector2(608, 128)
-object_id = "1"
 
 [node name="Door" parent="." index="2" instance=ExtResource("3_3aq4c")]
 position = Vector2(288, -32)

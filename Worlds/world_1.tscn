@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cfe8peu0y3g3o"]
 
-[ext_resource type="Script" path="res://World.gd" id="1_85m78"]
+[ext_resource type="Script" path="res://Scenes/World.gd" id="1_85m78"]
 [ext_resource type="PackedScene" uid="uid://d3bs0kmok3vlt" path="res://Scenes/Player.tscn" id="2_mlrvq"]
 [ext_resource type="TileSet" uid="uid://bj3u4rvp5mqpm" path="res://Tileset.tres" id="3_h1x4c"]
 [ext_resource type="PackedScene" uid="uid://cvalfgrl3fgh6" path="res://Objects/Checkpoint.tscn" id="4_k123h"]
