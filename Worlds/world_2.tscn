@@ -12,7 +12,7 @@ layer_0/tile_data = PackedInt32Array(262140, 0, 0, 262141, 0, 0, 262142, 0, 0, 2
 
 [node name="Teleport" parent="." index="2" instance=ExtResource("2_obfxh")]
 position = Vector2(576, 32)
-scene_destination = "res://Worlds/world_1.tscn"
+scene_destination = "res://Worlds/world_3.tscn"
 
 [node name="Key" parent="." index="3" instance=ExtResource("3_u8lnj")]
 position = Vector2(320, -264)
