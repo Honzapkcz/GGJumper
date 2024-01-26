@@ -16,12 +16,13 @@ func _ready():
 
 
 func on_latch(on: bool, id: String, group: String):
-	if id == input1_id or group != input1_group or id != input2_id or group != input2_group:
+	if id != input1_id and (group != input1_group or group.is_empty()) and id != input2_id and (group != input2_group or group.is_empty()):
 		return
-	if id == input1_id or group == input1_group:
+	if id == input1_id or (group == input1_group and not group.is_empty()):
 		input1 = on
-	elif id == input2_id or group == input2_group:
+	if id == input2_id or (group == input2_group and not group.is_empty()):
 		input2 = on
+	print(input1, " ", input2, " ", input1 and input2)
 	if output != (input1 and input2):
 		output = input1 and input2
 		Global.latch.emit(output, output_id, output_group)
