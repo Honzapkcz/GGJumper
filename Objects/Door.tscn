@@ -12,6 +12,7 @@ collision_layer = 2
 script = ExtResource("1_5m566")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.690196, 0.690196, 0.690196, 1)
 texture = ExtResource("1_apsvr")
 region_enabled = true
 region_rect = Rect2(40, 32, 16, 32)
