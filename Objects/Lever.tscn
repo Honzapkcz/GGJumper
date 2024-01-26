@@ -10,6 +10,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0179105, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Lever" type="Area2D"]
+collision_layer = 0
 script = ExtResource("1_gp1ar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -25,3 +26,6 @@ default_color = Color(0.752941, 0.752941, 0.752941, 1)
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.752941, 0.752941, 0.752941, 1)
 polygon = PackedVector2Array(-24, 32, 24, 32, 24, 16, -24, 16)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

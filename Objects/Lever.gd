@@ -27,6 +27,8 @@ func _input(event: InputEvent):
 		return
 	if event.keycode != KEY_E:
 		return
+	if not can_latch:
+		return
 	state = not state
 	Global.latch.emit(state, object_id, object_group)
 
