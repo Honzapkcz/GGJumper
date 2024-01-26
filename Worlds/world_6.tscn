@@ -44,6 +44,7 @@ item_id = "3"
 
 [node name="Button" parent="." index="7" instance=ExtResource("4_mrnpw")]
 position = Vector2(544, -96)
+object_id = "b0"
 
 [node name="NOTGate" parent="." index="8" instance=ExtResource("5_miimp")]
 input_id = "b0"
