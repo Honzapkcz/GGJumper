@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://sivqjq6k4l8e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxmaj"]
+size = Vector2(64, 64)
+
+[sub_resource type="Curve" id="Curve_vpoeo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0179105, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Lever" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xxmaj")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(0, 32)
+points = PackedVector2Array(0, 0, 0, -8, 0, -64)
+width = 8.0
+width_curve = SubResource("Curve_vpoeo")
+default_color = Color(0.752941, 0.752941, 0.752941, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.752941, 0.752941, 0.752941, 1)
+polygon = PackedVector2Array(-24, 32, 24, 32, 24, 16, -24, 16)
