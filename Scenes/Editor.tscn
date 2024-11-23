@@ -70,7 +70,7 @@ stretch = true
 
 [node name="SVPort" type="SubViewport" parent="LSplit/RSplit/VSplit/VPort"]
 handle_input_locally = false
-size = Vector2i(681, 426)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="LSplit/RSplit/VSplit/VPort/SVPort"]
