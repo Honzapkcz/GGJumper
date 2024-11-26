@@ -1,25 +1,29 @@
 extends Node
 
 @export var object_id: String
-@export var invoke_id: String
+@export var output_id: String
 @export var clock_interval_ms: int
-@export var repetitive: bool
-@export var use_animate_clock: bool
 @export var active: bool
+
+var clock: bool
 
 func _ready():
 	Global.latch.connect(on_latch)
-	Global.animate.connect(on_animate)
 
-func _process(delta):
-	if active or not repetitive or use_animate_clock:
+
+func start_clock():
+	if not active:
 		return
-	active = true
-	await get_tree().create_timer(clock_interval_ms / 1000).timeout
+	
+	clock = true
+	while active:
+		await get_tree().create_timer(clock_interval_ms / 1000).timeout
+		clock = !clock
+		Global.latch.emit(clock, output_id)
 	
 
-func on_latch(on: bool, id: String, group: String):
-	pass
-
-func on_animate(clock: int):
-	pass
+func on_latch(on: bool, id: String):
+	if id != object_id:
+		return
+	active == on
+	start_clock()
