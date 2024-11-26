@@ -2,7 +2,9 @@ extends Area2D
 class_name Key
 
 
-@export var item_id: String
+@export var output_id: String
+@export var output_signal: bool
+@export var custom_texture: Texture2D
 const wiggle: float = 8
 
 func _ready():
@@ -16,6 +18,6 @@ func on_animate(clock: int):
 
 func _on_body_entered(body: Node2D):
 	if body is Player:
-		Global.pick.emit(item_id)
+		Global.latch.emit(output_signal, output_id)
 		await get_tree().create_tween().tween_property($Sprite2D, "modulate", Color(1, 1, 1, 0), 1.0).finished
 		queue_free()

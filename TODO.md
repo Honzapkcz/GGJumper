@@ -10,7 +10,7 @@
   - [X] Global signal bus
   - [X] Desync visual updates with clock
   - [X] Remove group_ids (too much overhead)
-  - [ ] Remove item_pick signal
+  - [X] Remove item_pick signal
 97. Levels
   - [ ] Add Teaching Labels
   - [ ] Basics in logic gates
