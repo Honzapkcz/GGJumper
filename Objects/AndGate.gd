@@ -12,7 +12,7 @@ func _ready():
 	Global.latch.connect(on_latch)
 
 
-func on_latch(on: bool, id: String, group: String):
+func on_latch(on: bool, id: String):
 	if id != input1_id and id != input2_id:
 		return
 	if id == input1_id:

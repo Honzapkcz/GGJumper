@@ -6,7 +6,7 @@ extends Area2D
 ## Evaluated [i]Second[/i][br]
 ## If non-empty, sets player positon to [b]node_position_destination[/b]'s position
 @export var position_destination: Vector2
-## Evaluated only when [b]node_position_destiantion[/b] is [i]empty[/i][br]
+## Evaluated only when [b]node_position_destination[/b] is [i]empty[/i][br]
 ## If non-empty, changes player position to [b]position_destination[/b]
 @export_node_path("CanvasItem") var node_position_destination: NodePath
 
