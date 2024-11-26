@@ -1,13 +1,18 @@
 
 ## TODO
 
-1. General GamePlay
+99. General GamePlay
   - [X] malé posunutí mapy/objektů proto natrénování mapy -> ztěžení
   - [ ] Moving Objects
-2. Editor - Properties
+98. Communication Protocol
+  - [X] Global signal bus
+  - [ ] Desync visual updates with clock
+  - [ ] Remove group_ids (too much overhead)
+  - [ ] Remove item_pick signal
+09. Editor - Properties
   - [ ] Groups / Supgroups
   - [ ] Enums
-3. Editor - Scene Tree
+08. Editor - Scene Tree
   - [ ] Make this TODO lsit
 
 ## DATA
