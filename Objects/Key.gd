@@ -3,7 +3,7 @@ class_name Key
 
 
 @export var output_id: String
-@export var output_signal: bool
+@export var output_signal: bool = true
 @export var custom_texture: Texture2D
 const wiggle: float = 8
 
