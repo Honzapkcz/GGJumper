@@ -4,16 +4,27 @@
 99. General GamePlay
   - [X] malé posunutí mapy/objektů proto natrénování mapy -> ztěžení
   - [ ] Moving Objects
+  - [ ] Fluids & Swimming
+  - [ ] Speedrun mode
 98. Communication Protocol
   - [X] Global signal bus
-  - [ ] Desync visual updates with clock
-  - [ ] Remove group_ids (too much overhead)
+  - [X] Desync visual updates with clock
+  - [X] Remove group_ids (too much overhead)
   - [ ] Remove item_pick signal
+97. Levels
+  - [ ] Add Teaching Labels
+  - [ ] Basics in logic gates
+  - [ ] Include myself :3
+98. Graphics
+  - [ ] Differentiable checkpoints
+  - [ ] Differentiable portals
+  - [ ] Glow / Blink when interable
+  - [ ] Esc label playing as a timer
 09. Editor - Properties
   - [ ] Groups / Supgroups
   - [ ] Enums
 08. Editor - Scene Tree
-  - [ ] Make this TODO lsit
+  - [/] Make this TODO list
 
 ## DATA
 
