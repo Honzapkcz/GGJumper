@@ -12,12 +12,11 @@
 [node name="Door" parent="." index="0" instance=ExtResource("2_6o8pq")]
 position = Vector2(832, -512)
 scale = Vector2(2, 4)
-item_id = "1"
+object_id = "1"
 
 [node name="Door2" parent="." index="1" instance=ExtResource("2_6o8pq")]
 position = Vector2(576, -512)
 scale = Vector2(2, 4)
-item_id = "2"
 
 [node name="Door3" parent="." index="2" instance=ExtResource("2_6o8pq")]
 position = Vector2(640, -160)
@@ -28,19 +27,18 @@ object_id = "b1"
 [node name="Door4" parent="." index="3" instance=ExtResource("2_6o8pq")]
 position = Vector2(-160, -9.09495e-13)
 scale = Vector2(2, 4)
-item_id = "3"
 
 [node name="Key" parent="." index="4" instance=ExtResource("3_mlnt5")]
 position = Vector2(288, -480)
-item_id = "1"
+output_id = "1"
 
 [node name="Key2" parent="." index="5" instance=ExtResource("3_mlnt5")]
 position = Vector2(776, -480)
-item_id = "2"
+output_id = "2"
 
 [node name="Key3" parent="." index="6" instance=ExtResource("3_mlnt5")]
 position = Vector2(632, -480)
-item_id = "3"
+output_id = "3"
 
 [node name="Button" parent="." index="7" instance=ExtResource("4_mrnpw")]
 position = Vector2(544, -96)
