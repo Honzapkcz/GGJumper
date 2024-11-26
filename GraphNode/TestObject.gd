@@ -1,7 +1,9 @@
+@icon("res://icon.png")
+
+class_name TestResourceObject
 ## Thanks to Godot Docs for fabulous documentation
 ## Everything copied from there
-@icon("res://icon.png")
-extends Object
+extends Resource
 
 enum Direction {LEFT, RIGHT, UP, DOWN}
 
@@ -73,7 +75,7 @@ enum Direction {LEFT, RIGHT, UP, DOWN}
 @export_group("", "")
 @export var ungrouped_number = 3
 
-@export_multiline var character_biography
+@export_multiline var character_biography: String
 
 @export_node_path("Button", "TouchScreenButton") var some_button
 

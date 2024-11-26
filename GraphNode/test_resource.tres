@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="TestResourceObject" load_steps=2 format=3 uid="uid://dk3704wt2de1j"]
+
+[ext_resource type="Script" path="res://GraphNode/TestObject.gd" id="1_ehsuv"]
+
+[resource]
+script = ExtResource("1_ehsuv")
+string = ""
+int_number = 5
+float_number = 5.0
+type = 0
+format = 0
+direction = 0
+int_array = Array[int]([])
+direction_array = Array[int]([])
+image_array = Array[Image]([])
+packed_array = PackedStringArray()
+hp = 30
+speed = 1.25
+dye_color = Color(0, 0, 0, 1)
+sprite_folder_path = ""
+character_class = 0
+character_speed = 0
+character_name = "Rebecca"
+transition_speed = null
+fading_attenuation = null
+effect_power = null
+sound_effect_path = ""
+notes_path = ""
+flag_elements = 0
+flag_targets = 0
+merge_targets = 0
+x = null
+navigation_layers = 0
+physics_layers = 0
+render_layers = 0
+navigation_layers_3d = 0
+physics_layers_3d = 0
+render_layers_3d = 0
+avoidance_layers = 0
+global_dir = ""
+global_file_path = ""
+global_filter_path = ""
+nickname = "Nick"
+age = 26
+car_label = "Speedy"
+car_number = 3
+ungrouped_number = 3
+character_biography = ""
+some_button = null
+character_id = ""
+number = null
+number2 = null
+number3 = 0.0
+power_percent = null
+health_delta = null
+angle_radians = null
+angle_degrees = null
+target_offset = null
+nickname2 = "Nick"
+age2 = 26
+car_label2 = "Speedy"
+car_number2 = 3
