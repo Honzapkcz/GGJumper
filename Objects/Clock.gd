@@ -1,9 +1,7 @@
 extends Node
 
 @export var object_id: String
-@export var object_group: String
 @export var invoke_id: String
-@export var invoke_group: String
 @export var clock_interval_ms: int
 @export var repetitive: bool
 @export var use_animate_clock: bool

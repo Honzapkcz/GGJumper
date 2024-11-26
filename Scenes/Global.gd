@@ -5,7 +5,7 @@ extends Node
 
 signal respawn()
 signal checkpoint(pos: Vector2, level: int)
-signal latch(on: bool, id: String, group: String)
+signal latch(on: bool, id: String)
 signal pick(item: String)
 signal drop(item: String)
 signal animate(clock: int)

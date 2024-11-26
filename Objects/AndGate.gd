@@ -1,11 +1,8 @@
 extends Node
 
 @export var input1_id: String
-@export var input1_group: String
 @export var input2_id: String
-@export var input2_group: String
 @export var output_id: String
-@export var output_group: String
 
 var input1: bool
 var input2: bool
@@ -16,13 +13,12 @@ func _ready():
 
 
 func on_latch(on: bool, id: String, group: String):
-	if id != input1_id and (group != input1_group or group.is_empty()) and id != input2_id and (group != input2_group or group.is_empty()):
+	if id != input1_id and id != input2_id:
 		return
-	if id == input1_id or (group == input1_group and not group.is_empty()):
+	if id == input1_id:
 		input1 = on
-	if id == input2_id or (group == input2_group and not group.is_empty()):
+	if id == input2_id:
 		input2 = on
-	print(input1, " ", input2, " ", input1 and input2)
 	if output != (input1 and input2):
 		output = input1 and input2
-		Global.latch.emit(output, output_id, output_group)
+		Global.latch.emit(output, output_id)
