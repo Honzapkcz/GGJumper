@@ -20,6 +20,8 @@ enum {
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var state: int = WALK
 var vel: Vector2
+var stillness: float
+var blinking: bool
 
 func _physics_process(delta: float):
 	# Add the gravity.
@@ -30,6 +32,33 @@ func _physics_process(delta: float):
 			walk(delta)
 		CLIMB:
 			climb(delta)
+	
+	if velocity.is_zero_approx():
+		stillness += delta
+	else:
+		stillness = 0
+		if not blinking:
+			return
+		blinking = false
+		var tween = get_tree().create_tween()
+		tween.tween_property($Eye1, "scale:y", 32, 0.25).set_trans(Tween.TRANS_CUBIC)
+		tween.parallel().tween_property($Eye2, "scale:y", 32, 0.25).set_trans(Tween.TRANS_CUBIC)
+		
+	
+	if stillness > 15 and not blinking:
+		blinking = true
+		var tween = get_tree().create_tween()
+		tween.tween_property($Eye1, "scale:y", 2, 0.25).set_trans(Tween.TRANS_CUBIC)
+		tween.parallel().tween_property($Eye2, "scale:y", 2, 0.25).set_trans(Tween.TRANS_CUBIC)
+	elif stillness > 5 and not blinking:
+		blinking = true
+		var tween = get_tree().create_tween()
+		tween.tween_property($Eye1, "scale:y", 2, 0.10).set_trans(Tween.TRANS_CUBIC)
+		tween.parallel().tween_property($Eye2, "scale:y", 2, 0.10).set_trans(Tween.TRANS_CUBIC)
+		tween.parallel().tween_property($Eye1, "scale:y", 32, 0.15).set_trans(Tween.TRANS_CUBIC).set_delay(0.15)
+		tween.parallel().tween_property($Eye2, "scale:y", 32, 0.15).set_trans(Tween.TRANS_CUBIC).set_delay(0.15)
+		tween.parallel().tween_property(self, "blinking", false, 0).set_delay(randf_range(2.5, 5.0))
+	
 	
 	for i: int in range(get_slide_collision_count()):
 		var c: KinematicCollision2D = get_slide_collision(i)
