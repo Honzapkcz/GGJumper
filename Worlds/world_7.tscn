@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://fdfe40ycuoxx"]
+[gd_scene load_steps=7 format=3 uid="uid://fdfe40ycuoxx"]
 
 [ext_resource type="PackedScene" uid="uid://dvoqhvtoq3knb" path="res://Scenes/World.tscn" id="1_em4lb"]
 [ext_resource type="PackedScene" uid="uid://sivqjq6k4l8e" path="res://Objects/Lever.tscn" id="2_3sal6"]
 [ext_resource type="PackedScene" uid="uid://dxcscnvkhggrl" path="res://Objects/Door.tscn" id="3_7onyc"]
 [ext_resource type="PackedScene" uid="uid://cqgjwirnr85wk" path="res://Objects/AndGate.tscn" id="4_r8o3v"]
-[ext_resource type="PackedScene" uid="uid://3ag2axe0xwar" path="res://Objects/XorGate.tscn" id="5_ttla0"]
 [ext_resource type="PackedScene" uid="uid://ct6b2ay6tvnm" path="res://Objects/NotGate.tscn" id="6_i8k4j"]
 [ext_resource type="PackedScene" uid="uid://d0a05mms43kmy" path="res://Objects/Teleport.tscn" id="7_t2q14"]
 
@@ -30,20 +29,20 @@ position = Vector2(672, 0)
 scale = Vector2(2, 4)
 object_id = "x"
 
-[node name="ANDGate" parent="." index="6" instance=ExtResource("4_r8o3v")]
-input1_id = "i0"
-input2_id = "i1"
-output_id = "x"
-
-[node name="XORGate" parent="." index="7" instance=ExtResource("5_ttla0")]
-input1_id = "1"
-input2_id = "2"
-output_id = "i1"
-
-[node name="NOTGate" parent="." index="8" instance=ExtResource("6_i8k4j")]
-input_id = "0"
-output_id = "i0"
-
-[node name="Teleport" parent="." index="9" instance=ExtResource("7_t2q14")]
+[node name="Teleport" parent="." index="6" instance=ExtResource("7_t2q14")]
 position = Vector2(864, 0)
 scene_destination = "res://Worlds/Lobby.tscn"
+
+[node name="NOTGate" parent="." index="7" instance=ExtResource("6_i8k4j")]
+input_id = "1"
+output_id = "i1"
+
+[node name="ANDGate" parent="." index="8" instance=ExtResource("4_r8o3v")]
+input1_id = "0"
+input2_id = "i1"
+output_id = "01"
+
+[node name="ANDGate2" parent="." index="9" instance=ExtResource("4_r8o3v")]
+input1_id = "01"
+input2_id = "2"
+output_id = "x"
