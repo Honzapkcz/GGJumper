@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvalfgrl3fgh6"]
+[gd_scene load_steps=4 format=3 uid="uid://cvalfgrl3fgh6"]
 
 [ext_resource type="Script" path="res://Objects/Checkpoint.gd" id="1_nphbx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6jwu"]
 size = Vector2(48, 88)
+
+[sub_resource type="QuadMesh" id="QuadMesh_k0nvf"]
 
 [node name="Checkpoint" type="Area2D"]
 collision_layer = 0
@@ -12,5 +14,16 @@ script = ExtResource("1_nphbx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 20)
 shape = SubResource("RectangleShape2D_g6jwu")
+
+[node name="Overlay" type="MeshInstance2D" parent="."]
+modulate = Color(0.752941, 0.752941, 0.752941, 1)
+position = Vector2(0, 24)
+scale = Vector2(8, 80)
+mesh = SubResource("QuadMesh_k0nvf")
+
+[node name="Flag" type="Polygon2D" parent="."]
+position = Vector2(0, 32)
+color = Color(0.752941, 0.752941, 0.752941, 0)
+polygon = PackedVector2Array(0, -8, 40, 8, 0, 24)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
