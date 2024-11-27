@@ -28,9 +28,11 @@ func _on_body_entered(body):
 	if body is Player:
 		can_teleport = true
 		last_body = body
-		get_tree().create_tween().tween_property($Label, "modulate", Color(1, 1, 1, 1), 0.5)
+		get_tree().create_tween().tween_property($Overlay, "scale:x", 38, 0.5).set_trans(Tween.TRANS_CUBIC)
+		get_tree().create_tween().tween_property($Overlay, "position:x", 0, 0.5).set_trans(Tween.TRANS_CUBIC)
 
 func _on_body_exited(body):
 	if body is Player:
 		can_teleport = false
-		get_tree().create_tween().tween_property($Label, "modulate", Color(1, 1, 1, 0), 0.5)
+		get_tree().create_tween().tween_property($Overlay, "scale:x", 5, 0.5).set_trans(Tween.TRANS_CUBIC)
+		get_tree().create_tween().tween_property($Overlay, "position:x", 16.5, 0.5).set_trans(Tween.TRANS_CUBIC)
