@@ -1,10 +1,16 @@
 extends Area2D
 
 @export var object_id: String
+@export var start_state: bool
 
 var state: bool
 var can_latch: bool
 
+func _ready() -> void:
+	state = start_state
+	animate()
+	await get_tree().process_frame
+	Global.latch.emit(state, object_id)
 
 func _on_body_entered(body: Node2D):
 	if not (body is Player or body is RigidBody2D):
