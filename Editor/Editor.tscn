@@ -1,0 +1,187 @@
+[gd_scene load_steps=14 format=3 uid="uid://clnjk75b4x3cf"]
+
+[ext_resource type="Script" path="res://Editor/Split3Container.gd" id="1_7fjfq"]
+[ext_resource type="Texture2D" uid="uid://dh5bq5rg4x4dy" path="res://tilemap.png" id="1_fxsd0"]
+[ext_resource type="ButtonGroup" uid="uid://bpthrbkp5f2hw" path="res://Editor/modes.tres" id="2_ek24u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ejsd5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg3rv"]
+bg_color = Color(0.0701525, 0.0701524, 0.0701524, 0.513726)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ecvdk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3s837"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgu1s"]
+bg_color = Color(1, 1, 1, 0.533333)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_je45o"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+anti_aliasing = false
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_koiy4"]
+color = Color(1, 1, 1, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usc0k"]
+atlas = ExtResource("1_fxsd0")
+region = Rect2(0, 62, 32, 2)
+
+[sub_resource type="Theme" id="Theme_214w5"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.466179, 0.466182, 0.466181, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 2
+Button/styles/focus = SubResource("StyleBoxEmpty_ejsd5")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_bg3rv")
+PopupMenu/styles/embedded_border = SubResource("StyleBoxEmpty_ecvdk")
+PopupMenu/styles/embedded_unfocused_border = SubResource("StyleBoxEmpty_3s837")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_wgu1s")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_je45o")
+PopupMenu/styles/separator = SubResource("StyleBoxLine_koiy4")
+SplitContainer/constants/separation = 5
+VSplitContainer/icons/grabber = SubResource("AtlasTexture_usc0k")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_c2wl2"]
+color = Color(1, 1, 1, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 3
+vertical = true
+
+[node name="Editor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.996369)
+theme = SubResource("Theme_214w5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="MenuBar" type="MenuBar" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+flat = true
+
+[node name="World" type="PopupMenu" parent="VBoxContainer/PanelContainer/HBoxContainer/MenuBar"]
+item_count = 6
+item_0/text = "New"
+item_1/text = "Open"
+item_1/id = 1
+item_2/text = "Save As"
+item_2/id = 2
+item_3/text = "Save"
+item_3/id = 3
+item_4/text = "Exit"
+item_4/id = 4
+item_5/id = 5
+item_5/separator = true
+
+[node name="Objects" type="PopupMenu" parent="VBoxContainer/PanelContainer/HBoxContainer/MenuBar"]
+auto_translate_mode = 1
+
+[node name="Logic" type="PopupMenu" parent="VBoxContainer/PanelContainer/HBoxContainer/MenuBar"]
+auto_translate_mode = 1
+
+[node name="Help" type="PopupMenu" parent="VBoxContainer/PanelContainer/HBoxContainer/MenuBar"]
+auto_translate_mode = 1
+
+[node name="SceneMode" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("2_ek24u")
+text = "Scene"
+flat = true
+
+[node name="TerrainMode" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_ek24u")
+text = "Terrain"
+flat = true
+
+[node name="ScriptMode" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_ek24u")
+text = "Script"
+flat = true
+
+[node name="Control3" type="Control" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSplit3Container" type="Container" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("1_7fjfq")
+splitter_stylebox = SubResource("StyleBoxLine_c2wl2")
+split_offset_left = 200.0
+split_offset_right = 200.0
+
+[node name="Panel3" type="PanelContainer" parent="VBoxContainer/HSplit3Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Tree" type="Tree" parent="VBoxContainer/HSplit3Container/Panel3"]
+layout_mode = 2
+
+[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer/HSplit3Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="VBoxContainer/HSplit3Container/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/HSplit3Container/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GraphEdit" type="GraphEdit" parent="VBoxContainer/HSplit3Container/VSplitContainer/Panel"]
+layout_mode = 2
+scroll_offset = Vector2(0, -12)
+show_menu = false
+
+[node name="Panel2" type="PanelContainer" parent="VBoxContainer/HSplit3Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer/HSplit3Container/Panel2"]
+layout_mode = 2
+max_columns = 2
