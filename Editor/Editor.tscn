@@ -74,7 +74,7 @@ grow_vertical = 2
 scale = Vector2(1, 0.996369)
 theme = SubResource("Theme_214w5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Layout" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,18 +82,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="Menu" type="PanelContainer" parent="Layout"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
+[node name="MenuBox" type="HBoxContainer" parent="Layout/Menu"]
 layout_mode = 2
 
-[node name="MenuBar" type="MenuBar" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="MenuBar" type="MenuBar" parent="Layout/Menu/MenuBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 flat = true
 
-[node name="World" type="PopupMenu" parent="VBoxContainer/PanelContainer/HBoxContainer/MenuBar"]
+[node name="World" type="PopupMenu" parent="Layout/Menu/MenuBox/MenuBar"]
 item_count = 6
 item_0/text = "New"
 item_1/text = "Open"
@@ -107,16 +107,16 @@ item_4/id = 4
 item_5/id = 5
 item_5/separator = true
 
-[node name="Objects" type="PopupMenu" parent="VBoxContainer/PanelContainer/HBoxContainer/MenuBar"]
+[node name="Objects" type="PopupMenu" parent="Layout/Menu/MenuBox/MenuBar"]
 auto_translate_mode = 1
 
-[node name="Logic" type="PopupMenu" parent="VBoxContainer/PanelContainer/HBoxContainer/MenuBar"]
+[node name="Logic" type="PopupMenu" parent="Layout/Menu/MenuBox/MenuBar"]
 auto_translate_mode = 1
 
-[node name="Help" type="PopupMenu" parent="VBoxContainer/PanelContainer/HBoxContainer/MenuBar"]
+[node name="Help" type="PopupMenu" parent="Layout/Menu/MenuBox/MenuBar"]
 auto_translate_mode = 1
 
-[node name="SceneMode" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="SceneMode" type="Button" parent="Layout/Menu/MenuBox"]
 layout_mode = 2
 toggle_mode = true
 button_pressed = true
@@ -124,25 +124,25 @@ button_group = ExtResource("2_ek24u")
 text = "Scene"
 flat = true
 
-[node name="TerrainMode" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="TerrainMode" type="Button" parent="Layout/Menu/MenuBox"]
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("2_ek24u")
 text = "Terrain"
 flat = true
 
-[node name="ScriptMode" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="ScriptMode" type="Button" parent="Layout/Menu/MenuBox"]
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("2_ek24u")
 text = "Script"
 flat = true
 
-[node name="Control3" type="Control" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="Control3" type="Control" parent="Layout/Menu/MenuBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HSplit3Container" type="Container" parent="VBoxContainer"]
+[node name="Splitter" type="Container" parent="Layout"]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("1_7fjfq")
@@ -150,38 +150,60 @@ splitter_stylebox = SubResource("StyleBoxLine_c2wl2")
 split_offset_left = 200.0
 split_offset_right = 200.0
 
-[node name="Panel3" type="PanelContainer" parent="VBoxContainer/HSplit3Container"]
+[node name="TreeView" type="PanelContainer" parent="Layout/Splitter"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Tree" type="Tree" parent="VBoxContainer/HSplit3Container/Panel3"]
+[node name="Tree" type="Tree" parent="Layout/Splitter/TreeView"]
 layout_mode = 2
 
-[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer/HSplit3Container"]
+[node name="Center" type="VSplitContainer" parent="Layout/Splitter"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Control" type="Control" parent="VBoxContainer/HSplit3Container/VSplitContainer"]
+[node name="Control" type="Control" parent="Layout/Splitter/Center"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Panel" type="PanelContainer" parent="VBoxContainer/HSplit3Container/VSplitContainer"]
+[node name="Dock" type="PanelContainer" parent="Layout/Splitter/Center"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="GraphEdit" type="GraphEdit" parent="VBoxContainer/HSplit3Container/VSplitContainer/Panel"]
+[node name="GraphEdit" type="GraphEdit" parent="Layout/Splitter/Center/Dock"]
 layout_mode = 2
-scroll_offset = Vector2(0, -12)
 show_menu = false
 
-[node name="Panel2" type="PanelContainer" parent="VBoxContainer/HSplit3Container"]
+[node name="Context" type="PanelContainer" parent="Layout/Splitter"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ItemList" type="ItemList" parent="VBoxContainer/HSplit3Container/Panel2"]
+[node name="TabContainer" type="TabContainer" parent="Layout/Splitter/Context"]
 layout_mode = 2
-max_columns = 2
+current_tab = 1
+
+[node name="Objects" type="ItemList" parent="Layout/Splitter/Context/TabContainer"]
+visible = false
+layout_mode = 2
+item_count = 7
+item_0/text = "Button"
+item_1/text = "Checkpoint"
+item_2/text = "Door"
+item_3/text = "Key"
+item_4/text = "Lever"
+item_5/text = "Teleport"
+item_6/text = "Wiggle"
+metadata/_tab_index = 0
+
+[node name="Logic" type="ItemList" parent="Layout/Splitter/Context/TabContainer"]
+layout_mode = 2
+item_count = 5
+item_0/text = "AND Gate"
+item_1/text = "Clock"
+item_2/text = "NOT Gate"
+item_3/text = "OR Gate"
+item_4/text = "XOR Gate"
+metadata/_tab_index = 1
