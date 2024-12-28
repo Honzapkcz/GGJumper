@@ -1,61 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://clnjk75b4x3cf"]
+[gd_scene load_steps=5 format=3 uid="uid://clnjk75b4x3cf"]
 
 [ext_resource type="Script" path="res://Editor/Split3Container.gd" id="1_7fjfq"]
-[ext_resource type="Texture2D" uid="uid://dh5bq5rg4x4dy" path="res://tilemap.png" id="1_fxsd0"]
+[ext_resource type="Theme" uid="uid://c8v8j57cdnwn5" path="res://Editor/monochome.tres" id="1_c0sw7"]
 [ext_resource type="ButtonGroup" uid="uid://bpthrbkp5f2hw" path="res://Editor/modes.tres" id="2_ek24u"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ejsd5"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg3rv"]
-bg_color = Color(0.0701525, 0.0701524, 0.0701524, 0.513726)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ecvdk"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3s837"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgu1s"]
-bg_color = Color(1, 1, 1, 0.533333)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_je45o"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 1, 1, 1)
-border_blend = true
-anti_aliasing = false
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_koiy4"]
-color = Color(1, 1, 1, 1)
-grow_begin = 0.0
-grow_end = 0.0
-thickness = 2
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_usc0k"]
-atlas = ExtResource("1_fxsd0")
-region = Rect2(0, 62, 32, 2)
-
-[sub_resource type="Theme" id="Theme_214w5"]
-Button/colors/font_color = Color(1, 1, 1, 1)
-Button/colors/font_hover_color = Color(0.466179, 0.466182, 0.466181, 1)
-Button/colors/font_outline_color = Color(1, 1, 1, 1)
-Button/colors/font_pressed_color = Color(0, 0, 0, 1)
-Button/constants/outline_size = 2
-Button/styles/focus = SubResource("StyleBoxEmpty_ejsd5")
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_bg3rv")
-PopupMenu/styles/embedded_border = SubResource("StyleBoxEmpty_ecvdk")
-PopupMenu/styles/embedded_unfocused_border = SubResource("StyleBoxEmpty_3s837")
-PopupMenu/styles/hover = SubResource("StyleBoxFlat_wgu1s")
-PopupMenu/styles/panel = SubResource("StyleBoxFlat_je45o")
-PopupMenu/styles/separator = SubResource("StyleBoxLine_koiy4")
-SplitContainer/constants/separation = 5
-VSplitContainer/icons/grabber = SubResource("AtlasTexture_usc0k")
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_c2wl2"]
 color = Color(1, 1, 1, 1)
@@ -72,7 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.996369)
-theme = SubResource("Theme_214w5")
+theme = ExtResource("1_c0sw7")
 
 [node name="Layout" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -172,9 +119,16 @@ mouse_filter = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="GraphEdit" type="GraphEdit" parent="Layout/Splitter/Center/Dock"]
+[node name="TabContainer" type="TabContainer" parent="Layout/Splitter/Center/Dock"]
 layout_mode = 2
+current_tab = 0
+tabs_position = 1
+
+[node name="GraphEdit" type="GraphEdit" parent="Layout/Splitter/Center/Dock/TabContainer"]
+layout_mode = 2
+scroll_offset = Vector2(-740, -270)
 show_menu = false
+metadata/_tab_index = 0
 
 [node name="Context" type="PanelContainer" parent="Layout/Splitter"]
 layout_mode = 2
@@ -183,6 +137,7 @@ size_flags_vertical = 3
 
 [node name="TabContainer" type="TabContainer" parent="Layout/Splitter/Context"]
 layout_mode = 2
+tab_alignment = 1
 current_tab = 1
 
 [node name="Objects" type="ItemList" parent="Layout/Splitter/Context/TabContainer"]
