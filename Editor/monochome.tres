@@ -1,0 +1,56 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://c8v8j57cdnwn5"]
+
+[ext_resource type="Texture2D" uid="uid://dh5bq5rg4x4dy" path="res://tilemap.png" id="1_71n6p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ejsd5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg3rv"]
+bg_color = Color(0.0701525, 0.0701524, 0.0701524, 0.513726)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ecvdk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3s837"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgu1s"]
+bg_color = Color(1, 1, 1, 0.533333)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_je45o"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+anti_aliasing = false
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_koiy4"]
+color = Color(1, 1, 1, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usc0k"]
+atlas = ExtResource("1_71n6p")
+region = Rect2(0, 62, 32, 2)
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.466179, 0.466182, 0.466181, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 2
+Button/styles/focus = SubResource("StyleBoxEmpty_ejsd5")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_bg3rv")
+PopupMenu/styles/embedded_border = SubResource("StyleBoxEmpty_ecvdk")
+PopupMenu/styles/embedded_unfocused_border = SubResource("StyleBoxEmpty_3s837")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_wgu1s")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_je45o")
+PopupMenu/styles/separator = SubResource("StyleBoxLine_koiy4")
+SplitContainer/constants/separation = 5
+VSplitContainer/icons/grabber = SubResource("AtlasTexture_usc0k")
