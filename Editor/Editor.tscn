@@ -1,8 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://clnjk75b4x3cf"]
+[gd_scene load_steps=20 format=3 uid="uid://clnjk75b4x3cf"]
 
 [ext_resource type="Script" path="res://Editor/Split3Container.gd" id="1_7fjfq"]
 [ext_resource type="Theme" uid="uid://c8v8j57cdnwn5" path="res://Editor/monochome.tres" id="1_c0sw7"]
 [ext_resource type="ButtonGroup" uid="uid://bpthrbkp5f2hw" path="res://Editor/modes.tres" id="2_ek24u"]
+[ext_resource type="Script" path="res://Editor/Editor.gd" id="2_yadrd"]
+[ext_resource type="TileSet" uid="uid://bj3u4rvp5mqpm" path="res://Tileset.tres" id="3_ma5wr"]
+[ext_resource type="PackedScene" uid="uid://diarcsrg54os4" path="res://Objects/Button.tscn" id="4_8mvym"]
+[ext_resource type="PackedScene" uid="uid://cvalfgrl3fgh6" path="res://Objects/Checkpoint.tscn" id="5_o23b3"]
+[ext_resource type="PackedScene" uid="uid://dxcscnvkhggrl" path="res://Objects/Door.tscn" id="6_127t2"]
+[ext_resource type="PackedScene" uid="uid://cucaj6fv4kwd" path="res://Objects/Key.tscn" id="7_sodq3"]
+[ext_resource type="PackedScene" uid="uid://sivqjq6k4l8e" path="res://Objects/Lever.tscn" id="8_vflo6"]
+[ext_resource type="PackedScene" uid="uid://6ur5q5p8nema" path="res://Objects/OffsetPlatform.tscn" id="9_qhduo"]
+[ext_resource type="PackedScene" uid="uid://d0a05mms43kmy" path="res://Objects/Teleport.tscn" id="10_yxvq2"]
+[ext_resource type="PackedScene" uid="uid://bgqn2o7up3qok" path="res://Objects/Wiggle.tscn" id="11_um6oa"]
+[ext_resource type="PackedScene" uid="uid://cqgjwirnr85wk" path="res://Objects/AndGate.tscn" id="12_6c1vp"]
+[ext_resource type="PackedScene" uid="uid://o12x5hwmrs77" path="res://Objects/Clock.tscn" id="13_jlmoe"]
+[ext_resource type="PackedScene" uid="uid://ct6b2ay6tvnm" path="res://Objects/NotGate.tscn" id="14_jab8t"]
+[ext_resource type="PackedScene" uid="uid://d35ktivmfhe0o" path="res://Objects/OrGate.tscn" id="15_va5ut"]
+[ext_resource type="PackedScene" uid="uid://3ag2axe0xwar" path="res://Objects/XorGate.tscn" id="16_fn72k"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_c2wl2"]
 color = Color(1, 1, 1, 1)
@@ -11,7 +26,7 @@ grow_end = 0.0
 thickness = 3
 vertical = true
 
-[node name="Editor" type="Control"]
+[node name="Editor" type="Control" node_paths=PackedStringArray("tree", "graph", "docktab", "atlaslist", "tilelist", "tooltab", "objectlist", "logiclist", "sceneroot")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +35,21 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.996369)
 theme = ExtResource("1_c0sw7")
+script = ExtResource("2_yadrd")
+tree = NodePath("Layout/Splitter/TreeView/Tree")
+graph = NodePath("Layout/Splitter/Center/Dock/DockTab/Script")
+docktab = NodePath("Layout/Splitter/Center/Dock/DockTab")
+atlaslist = NodePath("Layout/Splitter/Center/Dock/DockTab/Tileset/AtlasList")
+tilelist = NodePath("Layout/Splitter/Center/Dock/DockTab/Tileset/TilesetList")
+tooltab = NodePath("Layout/Splitter/Toolbar/ToolTab")
+objectlist = NodePath("Layout/Splitter/Toolbar/ToolTab/Objects")
+logiclist = NodePath("Layout/Splitter/Toolbar/ToolTab/Logic")
+tileset = ExtResource("3_ma5wr")
+sceneroot = NodePath("Node2D")
+objects = Array[PackedScene]([ExtResource("4_8mvym"), ExtResource("5_o23b3"), ExtResource("6_127t2"), ExtResource("7_sodq3"), ExtResource("8_vflo6"), ExtResource("9_qhduo"), ExtResource("10_yxvq2"), ExtResource("11_um6oa")])
+elements = Array[PackedScene]([ExtResource("12_6c1vp"), ExtResource("13_jlmoe"), ExtResource("14_jab8t"), ExtResource("15_va5ut"), ExtResource("16_fn72k")])
+
+[node name="Node2D" type="Node2D" parent="."]
 
 [node name="Layout" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -51,13 +81,13 @@ item_3/text = "Save"
 item_3/id = 3
 item_4/text = "Exit"
 item_4/id = 4
+item_5/text = "Recent"
 item_5/id = 5
-item_5/separator = true
 
-[node name="Objects" type="PopupMenu" parent="Layout/Menu/MenuBox/MenuBar"]
-auto_translate_mode = 1
+[node name="Recent" type="PopupMenu" parent="Layout/Menu/MenuBox/MenuBar/World"]
+title = "Recent"
 
-[node name="Logic" type="PopupMenu" parent="Layout/Menu/MenuBox/MenuBar"]
+[node name="View" type="PopupMenu" parent="Layout/Menu/MenuBox/MenuBar"]
 auto_translate_mode = 1
 
 [node name="Help" type="PopupMenu" parent="Layout/Menu/MenuBox/MenuBar"]
@@ -104,6 +134,7 @@ size_flags_vertical = 3
 
 [node name="Tree" type="Tree" parent="Layout/Splitter/TreeView"]
 layout_mode = 2
+select_mode = 2
 
 [node name="Center" type="VSplitContainer" parent="Layout/Splitter"]
 layout_mode = 2
@@ -119,46 +150,66 @@ mouse_filter = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TabContainer" type="TabContainer" parent="Layout/Splitter/Center/Dock"]
+[node name="DockTab" type="TabContainer" parent="Layout/Splitter/Center/Dock"]
 layout_mode = 2
 current_tab = 0
 tabs_position = 1
+tabs_visible = false
+deselect_enabled = true
 
-[node name="GraphEdit" type="GraphEdit" parent="Layout/Splitter/Center/Dock/TabContainer"]
+[node name="Script" type="GraphEdit" parent="Layout/Splitter/Center/Dock/DockTab"]
 layout_mode = 2
-scroll_offset = Vector2(-740, -270)
+scroll_offset = Vector2(-412, -301)
 show_menu = false
 metadata/_tab_index = 0
 
-[node name="Context" type="PanelContainer" parent="Layout/Splitter"]
+[node name="Tileset" type="HBoxContainer" parent="Layout/Splitter/Center/Dock/DockTab"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+metadata/_tab_index = 1
+
+[node name="AtlasList" type="ItemList" parent="Layout/Splitter/Center/Dock/DockTab/Tileset"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/icon_margin = 15
+theme_override_constants/line_separation = 2
+
+[node name="TilesetList" type="ItemList" parent="Layout/Splitter/Center/Dock/DockTab/Tileset"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Toolbar" type="PanelContainer" parent="Layout/Splitter"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TabContainer" type="TabContainer" parent="Layout/Splitter/Context"]
+[node name="ToolTab" type="TabContainer" parent="Layout/Splitter/Toolbar"]
 layout_mode = 2
 tab_alignment = 1
 current_tab = 1
+tabs_visible = false
+deselect_enabled = true
 
-[node name="Objects" type="ItemList" parent="Layout/Splitter/Context/TabContainer"]
+[node name="Objects" type="ItemList" parent="Layout/Splitter/Toolbar/ToolTab"]
 visible = false
 layout_mode = 2
-item_count = 7
-item_0/text = "Button"
-item_1/text = "Checkpoint"
-item_2/text = "Door"
-item_3/text = "Key"
-item_4/text = "Lever"
-item_5/text = "Teleport"
-item_6/text = "Wiggle"
 metadata/_tab_index = 0
 
-[node name="Logic" type="ItemList" parent="Layout/Splitter/Context/TabContainer"]
+[node name="Logic" type="ItemList" parent="Layout/Splitter/Toolbar/ToolTab"]
 layout_mode = 2
-item_count = 5
-item_0/text = "AND Gate"
-item_1/text = "Clock"
-item_2/text = "NOT Gate"
-item_3/text = "OR Gate"
-item_4/text = "XOR Gate"
 metadata/_tab_index = 1
+
+[connection signal="index_pressed" from="Layout/Menu/MenuBox/MenuBar/World" to="." method="_on_world_index_pressed"]
+[connection signal="index_pressed" from="Layout/Menu/MenuBox/MenuBar/View" to="." method="_on_view_index_pressed"]
+[connection signal="index_pressed" from="Layout/Menu/MenuBox/MenuBar/Help" to="." method="_on_help_index_pressed"]
+[connection signal="toggled" from="Layout/Menu/MenuBox/SceneMode" to="." method="_on_scene_mode_toggled"]
+[connection signal="toggled" from="Layout/Menu/MenuBox/TerrainMode" to="." method="_on_terrain_mode_toggled"]
+[connection signal="toggled" from="Layout/Menu/MenuBox/ScriptMode" to="." method="_on_script_mode_toggled"]
+[connection signal="multi_selected" from="Layout/Splitter/TreeView/Tree" to="." method="_on_tree_multi_selected"]
+[connection signal="connection_request" from="Layout/Splitter/Center/Dock/DockTab/Script" to="." method="_on_graph_edit_connection_request"]
+[connection signal="disconnection_request" from="Layout/Splitter/Center/Dock/DockTab/Script" to="." method="_on_graph_edit_disconnection_request"]
+[connection signal="item_selected" from="Layout/Splitter/Center/Dock/DockTab/Tileset/AtlasList" to="." method="_on_atlas_list_item_selected"]
+[connection signal="item_selected" from="Layout/Splitter/Center/Dock/DockTab/Tileset/TilesetList" to="." method="_on_tileset_list_item_selected"]
+[connection signal="item_clicked" from="Layout/Splitter/Toolbar/ToolTab/Objects" to="." method="_on_objects_item_clicked"]
+[connection signal="item_clicked" from="Layout/Splitter/Toolbar/ToolTab/Logic" to="." method="_on_logic_item_clicked"]
