@@ -69,20 +69,14 @@ func _gui_input(e: InputEvent) -> void:
 			queue_sort()
 			return
 		
-		if event.position.x > split_offset_left and event.position.x < split_offset_left + split_width:
-			split_focus = 1
-			queue_redraw()
-		elif event.position.x > size.x - split_offset_right - split_width and event.position.x < size.x - split_offset_right:
-			split_focus = 2
-			queue_redraw()
-		else:
-			split_focus = 0
-			queue_redraw()
+		split_focus = -1
+		for i in range(split_offset.size()):
+			if event.position.x > split_offset[i] and event.position.x < split_offset[i] + split_width:
+				split_focus = i
+				queue_redraw()
+				break
 			
-		if split_focus:
-			mouse_default_cursor_shape = 10
-		else:
-			mouse_default_cursor_shape = 0
+		mouse_default_cursor_shape = 10 if split_focus >= 0 else 0
 		
 	
 	if e is InputEventMouseButton:
