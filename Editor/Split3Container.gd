@@ -49,12 +49,10 @@ func _gui_input(e: InputEvent) -> void:
 		var event: = e as InputEventMouseMotion
 		
 		if dragging:
-			if splitter_focus == 1:
-				if event.relative.x < 0 or size.x - split_offset_left - split_offset_right - 2 * splitter_width - event.relative.x > 2:
-					split_offset_left += event.relative.x
-			elif splitter_focus == 2:
-				if event.relative.x > 0 or size.x - split_offset_left - split_offset_right - 2 * splitter_width + event.relative.x > 2:
-					split_offset_right -= event.relative.x
+			if splitter_focus == 1 and split_offset_left - event.relative.x > 0 and event.relative.x < 0 or size.x - split_offset_left - split_offset_right - 2 * splitter_width - event.relative.x > 2:
+				split_offset_left += event.relative.x
+			elif splitter_focus == 2 and split_offset_right + event.relative.x < size.x and event.relative.x > 0 or size.x - split_offset_left - split_offset_right - 2 * splitter_width + event.relative.x > 2:
+				split_offset_right -= event.relative.x
 			else:
 				return
 			queue_redraw()
