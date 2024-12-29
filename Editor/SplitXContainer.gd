@@ -4,8 +4,9 @@ extends Container
 ## Might refractor later
 class_name HSplitXContainer
 
-var splitter_focus: int
+var split_focus: int
 var dragging: bool
+var i: int
 @export var split_width: float = 5:
 	set(value):
 		split_width = value
@@ -14,7 +15,7 @@ var dragging: bool
 	set(value):
 		split_stylebox = value
 		update_configuration_warnings()
-@export var split_offsets: PackedFloat32Array
+@export var split_offset: PackedFloat32Array
 @export var split_offset_left: float = 25:
 	set(value):
 		split_offset_left = value
@@ -27,19 +28,26 @@ var dragging: bool
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_SORT_CHILDREN:
-		if get_child_count() != 3:
-			return
-		fit_child_in_rect(get_child(0), Rect2(Vector2(0, 0), Vector2(split_offset_left, size.y)))
-		fit_child_in_rect(get_child(1), Rect2(Vector2(split_offset_left + split_width, 0), Vector2(size.x - split_offset_left - split_width * 2 - split_offset_right, size.y)))
-		fit_child_in_rect(get_child(2), Rect2(Vector2(size.x - split_offset_right, 0), Vector2(split_offset_right, size.y)))
+		i = 0
+		for c in get_children():
+			if not c is Control:
+				continue
+			fit_child_in_rect(c, Rect2(split_offset[i], 0, split_offset[i + 1] - split_offset[i] - split_width, size.y))
+			i += 1
 	elif what == NOTIFICATION_DRAW:
 		if not split_stylebox:
 			return
-		if splitter_focus == 1:
-			draw_style_box(split_stylebox, Rect2(Vector2(split_offset_left + split_width / 2 - split_stylebox.thickness / 2, 0), Vector2(split_width, size.y)))
-		elif splitter_focus == 2:
-			draw_style_box(split_stylebox, Rect2(Vector2(size.x - split_offset_right - split_width + split_width / 2 - split_stylebox.thickness / 2, 0), Vector2(split_width, size.y)))
+		if split_focus < 0:
+			return
+		draw_style_box(split_stylebox, Rect2(split_offset[split_focus - 1] - split_width / 2 - split_stylebox.thickness / 2, 0, split_width, size.y))
 	elif what == NOTIFICATION_CHILD_ORDER_CHANGED:
+		i = 0
+		for c in get_children():
+			if not c is Control:
+				continue
+			i += 1
+		split_offset.resize(i)
+		split_offset[i] = size.x
 		queue_sort()
 		queue_redraw()
 		update_configuration_warnings()
@@ -50,34 +58,36 @@ func _gui_input(e: InputEvent) -> void:
 		var event: = e as InputEventMouseMotion
 		
 		if dragging:
-			if splitter_focus == 1 and split_offset_left - event.relative.x > 0 and event.relative.x < 0 or size.x - split_offset_left - split_offset_right - 2 * split_width - event.relative.x > 2:
+			# Would drag my balls only to refractor this mess
+			if split_focus == 1 and split_offset_left - event.relative.x > 0 and event.relative.x < 0 or size.x - split_offset_left - split_offset_right - 2 * split_width - event.relative.x > 2:
 				split_offset_left += event.relative.x
-			elif splitter_focus == 2 and split_offset_right + event.relative.x < size.x and event.relative.x > 0 or size.x - split_offset_left - split_offset_right - 2 * split_width + event.relative.x > 2:
+			elif split_focus == 2 and split_offset_right + event.relative.x < size.x and event.relative.x > 0 or size.x - split_offset_left - split_offset_right - 2 * split_width + event.relative.x > 2:
 				split_offset_right -= event.relative.x
 			else:
 				return
 			queue_redraw()
 			queue_sort()
+			return
+		
+		if event.position.x > split_offset_left and event.position.x < split_offset_left + split_width:
+			split_focus = 1
+			queue_redraw()
+		elif event.position.x > size.x - split_offset_right - split_width and event.position.x < size.x - split_offset_right:
+			split_focus = 2
+			queue_redraw()
 		else:
-			if event.position.x > split_offset_left and event.position.x < split_offset_left + split_width:
-				splitter_focus = 1
-				queue_redraw()
-			elif event.position.x > size.x - split_offset_right - split_width and event.position.x < size.x - split_offset_right:
-				splitter_focus = 2
-				queue_redraw()
-			else:
-				splitter_focus = 0
-				queue_redraw()
-				
-			if splitter_focus:
-				mouse_default_cursor_shape = 10
-			else:
-				mouse_default_cursor_shape = 0
+			split_focus = 0
+			queue_redraw()
+			
+		if split_focus:
+			mouse_default_cursor_shape = 10
+		else:
+			mouse_default_cursor_shape = 0
 		
 	
 	if e is InputEventMouseButton:
 		var event: = e as InputEventMouseButton
-		if event.pressed and splitter_focus:
+		if event.pressed and split_focus >= 0:
 			dragging = true
 		if not event.pressed:
 			dragging = false
