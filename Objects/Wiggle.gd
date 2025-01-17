@@ -2,7 +2,7 @@ extends CanvasGroup
 
 @export var wiggle: Vector2
 @export var transition: TransitionType = TransitionType.TRANS_CUBIC
-@export var ease: EaseType = EaseType.EASE_IN_OUT
+@export var easing: EaseType = EaseType.EASE_IN_OUT
 @export var clock_multiplier: int = 1
 @export var delay: float
 
@@ -59,5 +59,5 @@ func on_animate(clock: int):
 		wiggle if clock % (2 * clock_multiplier) else -wiggle,
 		Global.anim_speed * clock_multiplier
 		).set_trans(otrans[transition]
-		).set_ease(oease[ease]
+		).set_ease(oease[easing]
 		).set_delay(delay)

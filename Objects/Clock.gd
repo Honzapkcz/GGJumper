@@ -17,7 +17,7 @@ func start_clock():
 	
 	clock = true
 	while active:
-		await get_tree().create_timer(clock_interval_ms / 1000).timeout
+		await get_tree().create_timer(clock_interval_ms / 1000.0).timeout
 		clock = !clock
 		Global.latch.emit(clock, output_id)
 	
@@ -25,5 +25,5 @@ func start_clock():
 func on_latch(on: bool, id: String):
 	if id != object_id:
 		return
-	active == on
+	active = on
 	start_clock()

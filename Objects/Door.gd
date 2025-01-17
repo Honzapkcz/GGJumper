@@ -18,6 +18,6 @@ func animate():
 func on_latch(on: bool, id: String):
 	if id != object_id:
 		return
-	state = 1 if on else 0
+	state = State.OPEN if on else State.CLOSE
 	set_collision_layer_value(2, not bool(state))
 	animate()

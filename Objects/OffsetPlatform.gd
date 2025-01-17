@@ -24,7 +24,7 @@ func animate():
 func on_latch(on: bool, id: String):
 	if id != object_id:
 		return
-	state = 0 if on else 1
+	state = State.VISIBLE if on else State.HIDDEN
 	$CollisionShape2D.disabled = state
 	animate()
 

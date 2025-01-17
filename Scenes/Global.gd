@@ -3,14 +3,16 @@ extends Node
 @export var clock_time: float
 @export var anim_speed: float
 
-signal respawn()
-signal checkpoint(pos: Vector2, level: int)
-signal latch(on: bool, id: String)
-signal pick(item: String)
-signal drop(item: String)
-signal animate(clock: int)
+@warning_ignore("unused_signal") signal respawn()
+@warning_ignore("unused_signal") signal checkpoint(pos: Vector2, level: int)
+@warning_ignore("unused_signal") signal latch(on: bool, id: String)
+@warning_ignore("unused_signal") signal pick(item: String)
+@warning_ignore("unused_signal") signal drop(item: String)
+@warning_ignore("unused_signal") signal animate(clock: int)
 
 var clock_value: int = 0
+var timer: float = 0
+var timer_paused: bool = true
 
 func _ready():
 	while true:
@@ -18,3 +20,7 @@ func _ready():
 		clock_value += 1
 		animate.emit(clock_value)
 	
+
+func _process(delta: float) -> void:
+	if not timer_paused:
+		timer += delta
