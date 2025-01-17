@@ -15,11 +15,18 @@
   - [ ] Add Teaching Labels
   - [ ] Basics in logic gates
   - [ ] Include myself :3
-98. Graphics
-  - [ ] Differentiable checkpoints
-  - [ ] Differentiable portals
+96. Graphics
+  - [X] Differentiable checkpoints
+  - [X] Differentiable portals
   - [ ] Glow / Blink when interable
-  - [ ] Esc label playing as a timer
+  - [X] Esc label playing as a timer
+95. Gravity
+  - [ ] Change grarvity when entering Areas
+  - [ ] Rotate towards Area center
+  - [ ] Top-Down Walking mode
+94. Game Mechanics
+  - [ ] Special boxes that control levers
+  - [ ] Boxes can be pushed in air
 09. Editor - Properties
   - [ ] Groups / Supgroups
   - [ ] Enums
@@ -73,5 +80,3 @@ IN:OUT #COLOR - NAME
 
 33:49 #ffff40 - scene
 34:50 #ffa020 - texture
-
-
