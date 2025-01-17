@@ -44,7 +44,6 @@ func _physics_process(delta: float):
 		tween.tween_property($Eye1, "scale:y", 32, 0.25).set_trans(Tween.TRANS_CUBIC)
 		tween.parallel().tween_property($Eye2, "scale:y", 32, 0.25).set_trans(Tween.TRANS_CUBIC)
 		
-	
 	if stillness > 15 and not blinking:
 		blinking = true
 		var tween = get_tree().create_tween()
@@ -58,7 +57,6 @@ func _physics_process(delta: float):
 		tween.parallel().tween_property($Eye1, "scale:y", 32, 0.15).set_trans(Tween.TRANS_CUBIC).set_delay(0.15)
 		tween.parallel().tween_property($Eye2, "scale:y", 32, 0.15).set_trans(Tween.TRANS_CUBIC).set_delay(0.15)
 		tween.parallel().tween_property(self, "blinking", false, 0).set_delay(randf_range(2.5, 5.0))
-	
 	
 	for i: int in range(get_slide_collision_count()):
 		var c: KinematicCollision2D = get_slide_collision(i)
@@ -95,6 +93,11 @@ func climb(delta):
 	$Eye2.position = eye2_pos + velocity / EYE_OFFSET
 	
 	move_and_slide()
+
+func _process(_delta: float) -> void:
+	$CanvasLayer/Button.text = "%02d:%05.2f" % [int(Global.timer / 60), Global.timer - 60 * int(Global.timer / 60)] if Global.timer > 0 else "Esc"
+	#print("%2i:%2i.%.2f" % [int(Global.timer / 60), fmod(Global.timer, 60), Global.timer - int(Global.timer)] if Global.timer > 0 else "Esc")
+
 
 func _on_area_2d_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
 	Global.respawn.emit()
