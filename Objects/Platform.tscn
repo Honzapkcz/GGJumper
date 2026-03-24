@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dk3ktn71l48o"]
+
+[ext_resource type="Script" uid="uid://b8s87j8aq37ih" path="res://Objects/Platform.gd" id="1_nkam5"]
+[ext_resource type="TileSet" uid="uid://bj3u4rvp5mqpm" path="res://Tileset.tres" id="1_qrrci"]
+[ext_resource type="Texture2D" uid="uid://dh5bq5rg4x4dy" path="res://tilemap.png" id="2_qrrci"]
+
+[node name="OffsetPlatform" type="TileMapLayer" unique_id=598049832]
+scale = Vector2(2, 2)
+tile_set = ExtResource("1_qrrci")
+script = ExtResource("1_nkam5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1349076744]
+texture = ExtResource("2_qrrci")
+region_enabled = true
+region_rect = Rect2(40, 32, 16, 32)
+region_filter_clip_enabled = true
